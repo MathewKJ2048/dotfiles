@@ -25,6 +25,7 @@
 
   imports = [
     ../git/git.nix
+    ../shell/shell.nix
   ];
 
   fonts.fontconfig.enable = true;
@@ -33,8 +34,9 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     hello
-    cmatrix
+    
     jetbrains-mono
+    imagemagick
 
     #more 
 
