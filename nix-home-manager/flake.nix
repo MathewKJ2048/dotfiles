@@ -9,7 +9,7 @@
     # Home Manager - follows our nixpkgs for consistency
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # this says where to get the source code of home-manager from
     };
 
   };
@@ -25,8 +25,8 @@
     packages.${system}.default = home-manager.packages.${system}.default;
 
     homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
+        inherit pkgs; # make it follow the same source for the packages it installs
+        modules = [ ./home.nix ]; # location to install packages
       };
     };
 
