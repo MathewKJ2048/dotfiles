@@ -12,12 +12,12 @@
     btop
     fastfetch
 
+    # image viewer
     chafa
 
     # tools
     fzf
     zoxide
-
   ];
 
 
