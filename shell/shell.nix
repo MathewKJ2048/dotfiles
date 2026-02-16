@@ -62,6 +62,27 @@
 
     initContent = ''
       export PROMPT='%~▶'
+
+      gitupdate()
+      {
+          # Current Working Directory
+          CWD="$(pwd)"
+
+          if [ -z "$1" ]; then
+              echo "Error: Please provide a commit message as the first argument."
+              exit 1
+          fi
+
+          commit_message="$*"
+
+          # -C to specify the working directory
+          git -C "$CWD" add .
+          git -C "$CWD" commit -m "$commit_message"
+          git -C "$CWD" pull
+          git -C "$CWD" push
+      }
+
+
     '';
   };
 
