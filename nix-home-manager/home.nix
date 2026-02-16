@@ -37,6 +37,8 @@
     jetbrains-mono
     vscodium
 
+    #more 
+
     # added stuff
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
