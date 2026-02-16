@@ -19,9 +19,15 @@
     let 
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      username = builtins.getEnv "USER";
     in 
     {
     packages.${system}.default = home-manager.packages.${system}.default;
+
+    homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home.nix ];
+      };
     };
 
 }
