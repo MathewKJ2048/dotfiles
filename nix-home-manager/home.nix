@@ -35,11 +35,10 @@
     hello
     cmatrix
     jetbrains-mono
-    vscodium
 
     #more 
 
-    # added stuff
+    # added stuff but removed codium
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
