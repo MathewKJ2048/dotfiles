@@ -14,10 +14,6 @@
 
     # image viewer
     chafa
-
-    # tools
-    fzf
-    zoxide
   ];
 
   programs.fzf = {
@@ -33,7 +29,10 @@
     enableZshIntegration = true;
   };
 
-  programs.dircolors.enable = true;
+  programs.dircolors = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -47,8 +46,16 @@
       append = true; # concurrent zsh sessions append their history list to the file, instead of overwriting
     };
 
+    enableCompletion = true;
+    completionInit = '' 
+        
+        zstyle ':completion:*' menu select yes
+        zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+    ''; # this doesn't seem to be working
+
     shellAliases = {
       # general
+      ls = "ls --color=auto";
       ll = "ls -l";
       la = "ls -a";
       cls = "clear";
@@ -65,19 +72,16 @@
 
       gitupdate()
       {
-          # Current Working Directory
-          CWD="$(pwd)"
+          CWD="$(pwd)"  # Current Working Directory
 
           if [ -z "$1" ]; then
               echo "Error: Please provide a commit message as the first argument."
               exit 1
           fi
 
-          commit_message="$*"
-
           # -C to specify the working directory
           git -C "$CWD" add .
-          git -C "$CWD" commit -m "$commit_message"
+          git -C "$CWD" commit -m "$*" # arguments need not be in quotes
           git -C "$CWD" pull
           git -C "$CWD" push
       }
