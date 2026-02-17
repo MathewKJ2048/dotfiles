@@ -46,12 +46,14 @@
       append = true; # concurrent zsh sessions append their history list to the file, instead of overwriting
     };
 
-    enableCompletion = true;
     completionInit = '' 
-        
+        autoload -U compinit 
+        compinit
+
         zstyle ':completion:*' menu select yes
-        zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-    ''; # this doesn't seem to be working
+        zstyle ':completion:*' list-colors ${"$"}{(s.:.)LS_COLORS}
+        
+    ''; # these need to be written explicitly, there is no boolean option to autoload compinit
 
     shellAliases = {
       # general
