@@ -36,7 +36,9 @@
     # # "Hello, world!" when run.
     
     jetbrains-mono
+    papirus-icon-theme
     imagemagick
+
 
 
     #more 
