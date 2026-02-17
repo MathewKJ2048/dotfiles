@@ -10,5 +10,4 @@
 
 ## Zsh:
 
-- tab complete and color
-- tab failure loss of syntax highlight patch
+- 

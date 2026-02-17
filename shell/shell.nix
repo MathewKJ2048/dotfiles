@@ -69,8 +69,19 @@
 
     };
 
+    shellGlobalAliases = {
+      ZSH_CUSTOM = "$HOME/.zsh_custom"; # this is to store things that should be in zsh but not in git
+    };
+
     initContent = ''
       export PROMPT='%~▶'
+
+      if [ -f "$HOME/.zsh_custom" ]; then
+        source "$HOME/.zsh_custom"
+      else
+        touch "$HOME/.zsh_custom"
+        echo ".zsh_custom file created"
+      fi
 
       gitupdate()
       {

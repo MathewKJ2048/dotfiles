@@ -16,4 +16,21 @@ experimental-features = nix-command flakes
 ```
 The file is `./nix-home-manager/nix.conf` if needed
 
-3) 
+3) To bootstrap home-manager, run:
+
+```
+nix-shell -p home-manager
+home-manager switch --flake ./nix-home-manager
+```
+
+4) To update flake.nix, run
+
+```
+nix flake update --flake ./nix-home-manager
+```
+
+5) To rebuild software, run
+
+```
+home-manager switch --flake ./nix-home-manager
+```
