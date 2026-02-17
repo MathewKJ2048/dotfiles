@@ -34,3 +34,10 @@ nix flake update --flake ./nix-home-manager
 ```
 home-manager switch --flake ./nix-home-manager
 ```
+
+6) To collect garbage, run:
+
+```
+nix-env --delete-generations old
+nix-store gc
+```
