@@ -32,18 +32,11 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
     
     jetbrains-mono
     papirus-icon-theme
     imagemagick
 
-
-
-    #more 
-
-    # added stuff but removed codium
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
