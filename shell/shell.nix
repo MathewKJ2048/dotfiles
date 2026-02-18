@@ -5,15 +5,16 @@
   home.packages = with pkgs; [
 
     # decorations
-    cmatrix
-    cava
-    cbonsai
-    sl
-    btop
-    fastfetch
-
-    # image viewer
-    chafa
+    cmatrix # matrix characters
+    cava # music visualizer
+    cowsay # cow say
+    chafa # image viewer ascii
+    cbonsai # ascii bonsai
+    sl # steam locomotive
+    btop # better htop
+    fastfetch # neofetch replacement
+    figlet # ascii text art
+    asciinema
   ];
 
   programs.fzf = {

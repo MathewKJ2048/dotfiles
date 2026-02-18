@@ -21,9 +21,10 @@
         email = "mathewkj2048@gmail.com"; 
         name = fullName;
       };
-      userArgs = {
+      userArgs = rec {
         username = name;
-        homeDirectory = "/home/${name}";
+        homeDirectory = "/home/${username}";
+        dotFilesPath = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
       };
     in
     {
