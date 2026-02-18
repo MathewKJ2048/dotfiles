@@ -15,6 +15,7 @@
     figlet # ascii text art
     asciinema # record the terminal
     asciinema-agg # to convert to gifs
+    ripgrep
   ];
 
   programs.fzf = {
@@ -79,6 +80,8 @@
     enableZshIntegration = true;
   };
 
+  programs.ripgrep.enable = true;
+
   programs.zsh = {
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
@@ -110,6 +113,7 @@
 
       fetch = lib.mkIf config.programs.fastfetch.enable "fastfetch";
       cd = lib.mkIf config.programs.zoxide.enable "z";
+      grep = lib.mkIf config.programs.ripgrep.enable "rg";
 
     };
 
