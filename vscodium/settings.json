@@ -1,0 +1,30 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 16,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.startupEditor": "none",
+    "explorer.confirmDelete": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "editor.insertSpaces": false,
+    "editor.wordWrap": "on",
+    "[typescript]": {
+        
+    },
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "window.dialogStyle": "custom",
+    "window.titleBarStyle": "custom",
+    "workbench.layoutControl.enabled": false,
+    "window.enableMenuBarMnemonics": false,
+    "redhat.telemetry.enabled": false,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "window.zoomLevel": -1,
+    "svg.preview.mode": "svg",
+    "editor.unicodeHighlight.nonBasicASCII": true,
+    "editor.unicodeHighlight.ambiguousCharacters": true,
+    "terminal.integrated.initialHint": false,
+    "editor.stickyScroll.enabled": false,
+    "workbench.tree.enableStickyScroll": false,
+    "terminal.integrated.stickyScroll.enabled": false
+}
