@@ -15,6 +15,7 @@
     fastfetch # neofetch replacement
     figlet # ascii text art
     asciinema
+    asciinema-agg # to convert to gifs
   ];
 
   programs.fzf = {
