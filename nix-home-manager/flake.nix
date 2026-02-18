@@ -15,8 +15,10 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      gitEmail = "mathewkj2048@gmail.com";
-      gitName = "Mathew Kuthur James";
+      gitArgs  = {
+        email = "mathewkj2048@gmail.com"; 
+        name = "Mathew Kuthur James";
+      };
     in
     {
       homeConfigurations."mathew" = home-manager.lib.homeManagerConfiguration {
@@ -27,13 +29,14 @@
         modules = [ 
           ./home.nix
         ];
-        extraSpecialArgs = {
-          inherit gitEmail;
-          inherit gitName;
+
+        # Optionally use extraSpecialArgs to pass through arguments to home.nix
+        # extraSpecialArgs is for home configurations, specialArgs is for nixOS configs
+        extraSpecialArgs = {  
+          inherit gitArgs;
         };
         
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        
       };
     };
 }
