@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userArgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "mathew";
-  home.homeDirectory = "/home/mathew";
+  home.username = userArgs.username;
+  home.homeDirectory = userArgs.homeDirectory;
 
 
   xdg.enable = true;

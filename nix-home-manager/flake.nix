@@ -14,10 +14,16 @@
     { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${system}; # this is efficient to enable quick eval. This does not mean "old" packages
+      name = "mathew";
+      fullName = "Mathew Kuthur James";
       gitArgs  = {
         email = "mathewkj2048@gmail.com"; 
-        name = "Mathew Kuthur James";
+        name = fullName;
+      };
+      userArgs = {
+        username = name;
+        homeDirectory = "/home/${name}";
       };
     in
     {
@@ -34,6 +40,7 @@
         # extraSpecialArgs is for home configurations, specialArgs is for nixOS configs
         extraSpecialArgs = {  
           inherit gitArgs;
+          inherit userArgs;
         };
         
         
