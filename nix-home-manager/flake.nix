@@ -15,7 +15,8 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      emailAddress = "MathewKJ455558@gmail.com";
+      gitEmail = "mathewkj2048@gmail.com";
+      gitName = "Mathew Kuthur James";
     in
     {
       homeConfigurations."mathew" = home-manager.lib.homeManagerConfiguration {
@@ -27,7 +28,8 @@
           ./home.nix
         ];
         extraSpecialArgs = {
-          inherit emailAddress;
+          inherit gitEmail;
+          inherit gitName;
         };
         
         # Optionally use extraSpecialArgs
