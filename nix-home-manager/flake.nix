@@ -24,6 +24,9 @@
       userArgs = rec {
         username = name;
         homeDirectory = "/home/${username}";
+        downloadsDirectory = "${homeDirectory}/Downloads";
+        screenshotsDirecory = "${homeDirectory}/Desktop";
+        videoDownloadDirectory = "${homeDirectory}/Desktop";
         dotFilesPath = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
       };
     in
