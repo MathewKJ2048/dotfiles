@@ -9,9 +9,15 @@
   programs.fzf.enableZshIntegration = true;
   programs.dircolors.enableZshIntegration = true;
 
-  programs.zsh = {
+  
+  programs.zsh = 
+  let
+    zshConfigPath = "${config.xdg.configHome}/zsh";
+    zshrcPath = "${zshConfigPath}/.zshrc";
+  in
+  {
     enable = true;
-    dotDir = "${config.xdg.configHome}/zsh";
+    dotDir = zshConfigPath;
     syntaxHighlighting.enable = true;
 
     history = {
@@ -39,6 +45,7 @@
       history = "history 0";
       ip = "ip a";
       ipconfig = "ip a";
+      refresh = "source ${zshrcPath}";
 
       # program-specific
       fetch = lib.mkIf config.programs.fastfetch.enable "fastfetch";
@@ -76,6 +83,10 @@
           git -C "$CWD" push
       }
 
+      try()
+      {
+        nix-shell -p $1;
+      }
 
     '';
   };

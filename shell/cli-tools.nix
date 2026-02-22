@@ -13,7 +13,7 @@
     asciinema-agg # to convert to gifs
   ];
 
-  programs.fzf = {
+  programs.fzf = { # fuzzy-finding
     enable = true;
     enableZshIntegration = true;
     defaultOptions = [
@@ -21,17 +21,17 @@
     ];
   };
 
-  programs.zoxide = {
+  programs.zoxide = { # better cd, written in rust
     enable = true;
     enableZshIntegration = true;
   };
 
-  programs.dircolors = {
+  programs.dircolors = { # used to get LS_COLORS
     enable = true;
     enableZshIntegration = true;
   };
 
-  programs.ripgrep.enable = true;
+  programs.ripgrep.enable = true; # better grep, written in rust
 
 
 }
