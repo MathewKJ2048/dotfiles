@@ -4,17 +4,19 @@
     enable = true;
     settings = {
       modules = [
-        "title"
-        "separator"
+        # "title"
+        # "break"
         "os"
-        "host"
         "kernel"
-        "uptime"
+        # "uptime"
         "packages"
         "shell"
-        "display"
         "de"
         "wm"
+        "break"
+        "memory"
+        "swap"
+        "disk"
         # "wmtheme",
         # "theme",
         # "icons",
@@ -22,15 +24,14 @@
         # "cursor",
         # "terminal",
         # "terminalfont",
+        "break"
+        "host"
+        "display"
         "cpu"
         "gpu"
-        "memory"
-        "swap"
-        "disk"
-        "localip"
         "battery"
-        "poweradapter"
-        "locale"
+        # "poweradapter"
+        
         "break"
         "colors"
       ];

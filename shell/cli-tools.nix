@@ -13,5 +13,25 @@
     asciinema-agg # to convert to gifs
   ];
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    defaultOptions = [
+      "--color=16"
+    ];
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.dircolors = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.ripgrep.enable = true;
+
 
 }

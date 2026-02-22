@@ -25,8 +25,7 @@
 
   imports = [
     ../git/git.nix
-    ../shell/shell.nix
-    
+    ../shell/zsh.nix
   ];
 
   fonts.fontconfig.enable = true;

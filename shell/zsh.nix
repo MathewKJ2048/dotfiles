@@ -1,45 +1,13 @@
 { config, pkgs, lib, ... }: {
-  
-  # decorations
-
-  home.packages = with pkgs; [
-
-    # decorations
-    cmatrix # matrix characters
-    cava # music visualizer
-    cowsay # cow say
-    chafa # image viewer ascii
-    cbonsai # ascii bonsai
-    sl # steam locomotive
-    btop # better htop
-    figlet # ascii text art
-    asciinema # record the terminal
-    asciinema-agg # to convert to gifs
-  ];
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-    defaultOptions = [
-      "--color=16"
-    ];
-  };
 
   imports = [
-    ./fetch.nix
+    ./fastfetch.nix
+    ./cli-tools.nix
   ];
 
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.dircolors = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.ripgrep.enable = true;
+  programs.zoxide.enableZshIntegration = true;
+  programs.fzf.enableZshIntegration = true;
+  programs.dircolors.enableZshIntegration = true;
 
   programs.zsh = {
     enable = true;
@@ -69,11 +37,13 @@
       la = "ls -a";
       cls = "clear";
       history = "history 0";
+      ip = "ip a";
+      ipconfig = "ip a";
 
+      # program-specific
       fetch = lib.mkIf config.programs.fastfetch.enable "fastfetch";
       cd = lib.mkIf config.programs.zoxide.enable "z";
       grep = lib.mkIf config.programs.ripgrep.enable "rg";
-
     };
 
     shellGlobalAliases = {
