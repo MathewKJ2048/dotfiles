@@ -8,7 +8,7 @@
     "liveServer.settings.donotShowInfoMsg": true,
     "editor.insertSpaces": false,
     "editor.wordWrap": "on",
-    "workbench.colorTheme": "Monstera",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
     "workbench.layoutControl.enabled": false,

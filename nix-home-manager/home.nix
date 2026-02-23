@@ -35,6 +35,7 @@
     jetbrains-mono
     papirus-icon-theme
     imagemagick
+    yt-dlp
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

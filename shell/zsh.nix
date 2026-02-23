@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, userArgs, ... }: {
 
   imports = [
     ./fastfetch.nix
@@ -86,6 +86,10 @@
       try()
       {
         nix-shell -p $1;
+      }
+      download()
+      {
+        yt-dlp -P ${userArgs.videoDownloadDirectory} $1;
       }
 
     '';
