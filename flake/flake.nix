@@ -45,7 +45,7 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ 
-          ./home.nix
+          ../home-manager/home.nix
         ];
 
         # Optionally use extraSpecialArgs to pass through arguments to home.nix
@@ -62,7 +62,7 @@
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userArgs.username} = import ./home.nix;
+              home-manager.users.${userArgs.username} = import ../home-manager/home.nix;
               home-manager.extraSpecialArgs = commonSpecialArgs;
             }
           ];

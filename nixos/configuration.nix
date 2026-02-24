@@ -83,7 +83,9 @@
     isNormalUser = true;
     description = fullName;
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
+  programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
