@@ -17,6 +17,7 @@
       pkgs = nixpkgs.legacyPackages.${system}; # this is efficient to enable quick eval. This does not mean "old" packages
       name = "mathew";
       fullName = "Mathew Kuthur James";
+      locale = "en_US.UTF-8";
       gitArgs  = {
         email = "mathewkj2048@gmail.com"; 
         name = fullName;
@@ -28,6 +29,13 @@
         screenshotsDirecory = "${homeDirectory}/Desktop";
         videoDownloadDirectory = "${homeDirectory}/Desktop";
         dotFilesPath = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
+      };
+      commonSpecialArgs = {
+        inherit name;
+        inherit fullName;
+        inherit gitArgs;
+        inherit userArgs;
+        inherit locale;
       };
     in
     {
@@ -42,12 +50,22 @@
 
         # Optionally use extraSpecialArgs to pass through arguments to home.nix
         # extraSpecialArgs is for home configurations, specialArgs is for nixOS configs
-        extraSpecialArgs = {  
-          inherit gitArgs;
-          inherit userArgs;
-        };
-        
+        extraSpecialArgs = commonSpecialArgs;
         
       };
+
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = commonSpecialArgs;
+          modules = [
+            ../nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+              home-manager.users.${userArgs.username} = import ./home.nix;
+              home-manager.extraSpecialArgs = commonSpecialArgs;
+            }
+          ];
+        };
     };
 }
