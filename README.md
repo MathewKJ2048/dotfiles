@@ -41,3 +41,11 @@ home-manager switch --flake ./nix-home-manager
 nix-env --delete-generations old
 nix-store gc
 ```
+
+## NixOS:
+
+1) Edit configuration.nix in `/etc/nixos/configuration.nix` to install git and enable nix-commands and flakes. Use `sudo nano`.
+
+2) git clone this repo and check the configuration in flake.nix
+
+3) 
