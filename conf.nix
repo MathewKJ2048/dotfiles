@@ -4,15 +4,16 @@
   email = "mathewkj2048@gmail.com"; 
 
   system = "x86_64-linux";
+  hostname = "nixos"; # networking hostname
 
   locale = "en_US.UTF-8";
   timezone = "America/New_York";
   
-  dotFilesDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
+  username = name;
   homeDirectory = "/home/${username}";
   downloadsDirectory = "${homeDirectory}/Downloads"; 
   desktopDirectory = "${homeDirectory}/Desktop";
-
+  dotFilesDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
   screenshotsDirecory = desktopDirectory; # location to which screenshots are saved
   videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
   
