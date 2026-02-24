@@ -8,7 +8,6 @@
     "liveServer.settings.donotShowInfoMsg": true,
     "editor.insertSpaces": false,
     "editor.wordWrap": "on",
-    "workbench.colorTheme": "Black Waves",
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
     "workbench.layoutControl.enabled": false,
@@ -23,5 +22,6 @@
     "terminal.integrated.initialHint": false,
     "editor.stickyScroll.enabled": false,
     "workbench.tree.enableStickyScroll": false,
-    "terminal.integrated.stickyScroll.enabled": false
+    "terminal.integrated.stickyScroll.enabled": false,
+    "workbench.colorTheme": "Default Dark+",
 }
