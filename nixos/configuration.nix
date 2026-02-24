@@ -30,16 +30,16 @@
   # Select internationalisation properties.
   i18n.defaultLocale = userConf.locale;
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = userConf.locale;
-    LC_IDENTIFICATION = userConf.locale;
-    LC_MEASUREMENT = userConf.locale;
-    LC_MONETARY = userConf.locale;
-    LC_NAME = userConf.locale;
-    LC_NUMERIC = userConf.locale;
-    LC_PAPER = userConf.locale;
-    LC_TELEPHONE = userConf.locale;
-    LC_TIME = userConf.locale;
+  i18n.extraLocaleSettings = let locale = userConf.locale; in {
+    LC_ADDRESS = locale;
+    LC_IDENTIFICATION = locale;
+    LC_MEASUREMENT = locale;
+    LC_MONETARY = locale;
+    LC_NAME = locale;
+    LC_NUMERIC = locale;
+    LC_PAPER = locale;
+    LC_TELEPHONE = locale;
+    LC_TIME = locale;
   };
 
   # Enable the X11 windowing system.
@@ -48,7 +48,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = userConf.KdeWayland;
 
   # Configure keymap in X11
   services.xserver.xkb = {
