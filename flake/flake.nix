@@ -11,7 +11,9 @@
   outputs =
     { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
+
+      userConf = import ../conf.nix;
+      system = userConf.system;
       pkgs = nixpkgs.legacyPackages.${system}; # this is efficient to enable quick eval. This does not mean "old" packages
       name = "mathew";
       fullName = "Mathew Kuthur James";
