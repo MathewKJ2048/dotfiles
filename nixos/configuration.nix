@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, locale, fullName, userArgs, ... }:
+{ config, pkgs, userConf, ... }:
 
 {
   imports =
@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = userConf.hostName; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -25,21 +25,21 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = userConf.timeZone;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = locale;
+  i18n.defaultLocale = userConf.locale;
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = locale;
-    LC_IDENTIFICATION = locale;
-    LC_MEASUREMENT = locale;
-    LC_MONETARY = locale;
-    LC_NAME = locale;
-    LC_NUMERIC = locale;
-    LC_PAPER = locale;
-    LC_TELEPHONE = locale;
-    LC_TIME = locale;
+    LC_ADDRESS = userConf.locale;
+    LC_IDENTIFICATION = userConf.locale;
+    LC_MEASUREMENT = userConf.locale;
+    LC_MONETARY = userConf.locale;
+    LC_NAME = userConf.locale;
+    LC_NUMERIC = userConf.locale;
+    LC_PAPER = userConf.locale;
+    LC_TELEPHONE = userConf.locale;
+    LC_TIME = userConf.locale;
   };
 
   # Enable the X11 windowing system.
@@ -79,9 +79,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${userArgs.username} = {
+  users.users.${userConf.username} = {
     isNormalUser = true;
-    description = fullName;
+    description = userConf.fullName;
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };

@@ -1,16 +1,16 @@
-{
+rec {
   name = "mathew";
   fullName = "Mathew Kuthur James";
   email = "mathewkj2048@gmail.com"; 
 
   system = "x86_64-linux";
-  hostname = "nixos"; # networking hostname
+  hostName = "nixos"; # networking hostname
 
   KdeWayland = true; # this is when building for KDE on wayland
   CinnamonX11 = false; # this is when building for Cinnamon on X11
 
   locale = "en_US.UTF-8";
-  timezone = "America/New_York";
+  timeZone = "America/New_York";
   
   username = name;
   homeDirectory = "/home/${username}";
@@ -21,8 +21,8 @@
   videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
   
   gitArgs  = {
-    inherits email; # email for git, used for signing commits
+    inherit email; # email for git, used for signing commits
     name = fullName; # name for git, used for signing commits
   };
 
-};
+}

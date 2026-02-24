@@ -1,15 +1,15 @@
-{ config, pkgs, userArgs, ... }:
+{ config, pkgs, userConf, standalone, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = userArgs.username;
-  home.homeDirectory = userArgs.homeDirectory;
+  home.username = userConf.username;
+  home.homeDirectory = userConf.homeDirectory;
 
 
   xdg.enable = true;
   xdg.mime.enable = true;
-  targets.genericLinux.enable = true;
+  targets.genericLinux.enable = standalone;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

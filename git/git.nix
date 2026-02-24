@@ -1,10 +1,10 @@
-{ config, pkgs, gitArgs, ... }: {
+{ config, pkgs, userConf, ... }: {
   
   programs.git = {
     enable = true;
     settings = {
-      user.name = gitArgs.name;
-      user.email = gitArgs.email;
+      user.name = userConf.gitArgs.name;
+      user.email = userConf.gitArgs.email;
 
       # default name of the main branch
       init.defaultBranch = "main";
