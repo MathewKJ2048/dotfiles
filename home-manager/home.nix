@@ -26,6 +26,7 @@
   imports = [
     ../git/git.nix
     ../shell/zsh.nix
+    ../vscodium/vscodium.nix
   ];
 
   fonts.fontconfig.enable = true;
