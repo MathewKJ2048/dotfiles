@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, ... }: {
+{ config, pkgs, userConf, standalone, ... }: {
   
   home.file = {
     "${config.xdg.configHome}/VSCodium/User/settings.json" = {

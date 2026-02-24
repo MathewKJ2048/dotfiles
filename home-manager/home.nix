@@ -33,10 +33,28 @@
 
   home.packages = with pkgs; [
     
+    # default things
     jetbrains-mono
     papirus-icon-theme
     imagemagick
     yt-dlp
+
+    # default standalone
+    # vscodium
+    # firefox
+    thunderbird
+    vlc
+    # lmms
+    # sfxr
+    # ruffle
+    # games - tuxcart, mindustry, naev, pinball etc
+
+    # KDE
+    ghostty
+
+    # Cinnamon
+    guake
+    flameshot
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
