@@ -6,6 +6,9 @@
   system = "x86_64-linux";
   hostname = "nixos"; # networking hostname
 
+  KdeWayland = true; # this is when building for KDE on wayland
+  CinnamonX11 = false; # this is when building for Cinnamon on X11
+
   locale = "en_US.UTF-8";
   timezone = "America/New_York";
   
@@ -13,7 +16,7 @@
   homeDirectory = "/home/${username}";
   downloadsDirectory = "${homeDirectory}/Downloads"; 
   desktopDirectory = "${homeDirectory}/Desktop";
-  dotFilesDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
+  thisDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
   screenshotsDirecory = desktopDirectory; # location to which screenshots are saved
   videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
   
