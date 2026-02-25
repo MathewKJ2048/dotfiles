@@ -1,4 +1,9 @@
-{ config, pkgs, userConf, standalone, ... }: {
+{ config, pkgs, userConf, isNixOS, ... }: {
+
+  programs.vscode = {
+    enable = isNixOS;
+    package = pkgs.vscodium;
+  }
   
   home.file = {
     "${config.xdg.configHome}/VSCodium/User/settings.json" = {

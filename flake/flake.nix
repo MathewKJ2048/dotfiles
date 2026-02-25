@@ -16,7 +16,7 @@
       pkgs = nixpkgs.legacyPackages.${userConf.system}; # this is efficient to enable quick eval. This does not mean "old" packages
       commonSpecialArgs = {
           inherit userConf;
-          standalone = false;
+          isNixOS = true;
       };
     in
     {
@@ -33,7 +33,7 @@
         # extraSpecialArgs is for home configurations, specialArgs is for nixOS configs
         extraSpecialArgs = {
           inherit userConf;
-          standalone = true;
+          isNixOS = false;
         };
         
       };

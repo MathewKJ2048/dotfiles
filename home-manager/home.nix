@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, standalone, ... }:
+{ config, pkgs, userConf, isNixOS, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -9,7 +9,7 @@
 
   xdg.enable = true;
   xdg.mime.enable = true;
-  targets.genericLinux.enable = standalone;
+  targets.genericLinux.enable = !isNixOS;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
