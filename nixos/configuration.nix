@@ -91,10 +91,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
-  programs.zsh.enable = true;
-
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs.zsh.enable = true; # has to be enabled here to avoid warnings
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -106,8 +103,6 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-	vscodium
-  ghostty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

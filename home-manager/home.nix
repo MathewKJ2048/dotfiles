@@ -27,6 +27,7 @@
     ../git/git.nix
     ../shell/zsh.nix
     ../vscodium/vscodium.nix
+    ../firefox/firefox.nix
     ../ghostty/ghostty.nix
   ];
 

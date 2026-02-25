@@ -3,7 +3,7 @@
   programs.vscode = {
     enable = isNixOS;
     package = pkgs.vscodium;
-  }
+  };
   
   home.file = {
     "${config.xdg.configHome}/VSCodium/User/settings.json" = {
