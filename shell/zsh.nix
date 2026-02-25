@@ -51,7 +51,7 @@
       fetch = lib.mkIf config.programs.fastfetch.enable "fastfetch";
       cd = lib.mkIf config.programs.zoxide.enable "z";
       grep = lib.mkIf config.programs.ripgrep.enable "rg";
-      cat = lib.mkIf config.programs.bat.enable "bat";
+      cat = lib.mkIf config.programs.bat.enable "bat -P";
     };
 
     shellGlobalAliases = {
@@ -68,7 +68,7 @@
         echo ".zsh_custom file created"
       fi
 
-      gitupdate()
+      gu()
       {
           CWD="$(pwd)"  # Current Working Directory
 
