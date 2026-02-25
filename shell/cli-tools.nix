@@ -11,7 +11,11 @@
     figlet # ascii text art
     asciinema # record the terminal
     asciinema-agg # to convert to gifs
+    fd # better find, written in rust
   ];
+
+  programs.ripgrep.enable = true; # better grep, written in rust
+  programs.bat.enable = true; # better cat, written in rust
 
   programs.fzf = { # fuzzy-finding
     enable = true;
@@ -31,7 +35,7 @@
     enableZshIntegration = true;
   };
 
-  programs.ripgrep.enable = true; # better grep, written in rust
+  
 
 
 }

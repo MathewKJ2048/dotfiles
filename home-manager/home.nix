@@ -42,19 +42,19 @@
     # default standalone
     # vscodium
     # firefox
-    thunderbird
-    vlc
+    # thunderbird
+    # vlc
     # lmms
     # sfxr
     # ruffle
     # games - tuxcart, mindustry, naev, pinball etc
 
     # KDE
-    ghostty
+    # ghostty
 
     # Cinnamon
-    guake
-    flameshot
+    # guake
+    # flameshot
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
