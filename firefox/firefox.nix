@@ -1,5 +1,4 @@
 { config, pkgs, userConf, isNixOS, ... }: {
-  {
   programs.firefox = {
       enable = isNixOS;
       profiles.default = {
@@ -29,6 +28,4 @@
           };
       };
   };
-}
-  
 }

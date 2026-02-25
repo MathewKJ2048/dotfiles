@@ -28,6 +28,7 @@
     ../shell/zsh.nix
     ../vscodium/vscodium.nix
     ../firefox/firefox.nix
+    ../freetube/freetube.nix
     ../ghostty/ghostty.nix
   ];
 
