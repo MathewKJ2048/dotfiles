@@ -92,6 +92,10 @@
       {
         yt-dlp -P ${userConf.videoDownloadDirectory} $1;
       }
+      seek()
+      {
+        fd $1 | fzf | xargs open
+      }
 
     '';
   };
