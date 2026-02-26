@@ -34,6 +34,15 @@
 
   fonts.fontconfig.enable = true;
 
+
+  programs.sfxr.enable = isNixOS;
+  programs.lmms.enable = isNixOS;
+
+  programs.ruffle.enable = isNixOS;
+  programs.vlc.enable = isNixOS;
+  programs.thunderbird.enable = isNixOS;
+
+
   home.packages = with pkgs; [
     
     # default things
@@ -43,21 +52,12 @@
     yt-dlp
 
     # default standalone
-    # vscodium
-    # firefox
     # thunderbird
     # vlc
     # lmms
     # sfxr
     # ruffle
     # games - tuxcart, mindustry, naev, pinball etc
-
-    # KDE
-    # ghostty
-
-    # Cinnamon
-    # guake
-    # flameshot
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
