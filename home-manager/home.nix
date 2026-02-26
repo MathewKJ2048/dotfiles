@@ -35,13 +35,18 @@
   fonts.fontconfig.enable = true;
 
 
-  programs.sfxr.enable = isNixOS;
-  programs.lmms.enable = isNixOS;
+  # programs.sfxr.enable = isNixOS;
+  # programs.lmms.enable = isNixOS;
 
-  programs.ruffle.enable = isNixOS;
-  programs.vlc.enable = isNixOS;
+  
+  # programs.vlc.enable = isNixOS;
   programs.thunderbird.enable = isNixOS;
 
+  # gaming
+  # programs.ruffle.enable = isNixOS;
+  # programs.aisleriot.enable = isNixOS;
+  #programs.space-cadet-pinball = isNixOS;
+  # mindustry, naev, xonotic, tuxcart, supertuxbro, wesnoth, windows vs tux, minetest
 
   home.packages = with pkgs; [
     
