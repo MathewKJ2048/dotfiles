@@ -39,7 +39,7 @@
 
   
   # programs.vlc.enable = isNixOS;
-  programs.thunderbird.enable = isNixOS;
+  # programs.thunderbird.enable = isNixOS;
 
   # gaming
   # programs.ruffle.enable = isNixOS;
