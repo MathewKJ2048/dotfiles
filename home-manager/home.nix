@@ -23,12 +23,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  imports = [
+  imports = [ 
     ../git/git.nix
     ../shell/zsh.nix
     ../vscodium/vscodium.nix
     ../firefox/firefox.nix
-    ../freetube/freetube.nix
     ../ghostty/ghostty.nix
   ];
 

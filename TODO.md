@@ -5,7 +5,7 @@
 
 ## KDE:
 
-- ghostty
+
 
 
 ## Cinnamon:
@@ -19,6 +19,7 @@
 - thunderbird
 - web-apps
 - ruffle
+- ghostty
 
 ## Custom scripts:
 - calendar
@@ -30,7 +31,8 @@
 ## High-level
 
 - save dconf dumps
-- making symlinks to programs
+- konsave
+
 - imagemagick for wallpapers
 - icon recoloring
 - auto-install personal scripts

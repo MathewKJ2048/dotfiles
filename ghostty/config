@@ -49,4 +49,12 @@
 # resize-overlay-duration = 4s 200ms
 
 font-family = "JetBrains Mono"
-keybind = ctrl+tab=toggle_quick_terminal
+
+theme = Solarized Darcula
+background-opacity = 0.8
+
+cursor-style = block
+shell-integration-features = no-cursor
+
+keybind = ctrl+shift+\=new_split:right
+keybind = ctrl+shift+-=new_split:down
