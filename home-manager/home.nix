@@ -29,6 +29,7 @@
     ../vscodium/vscodium.nix
     ../firefox/firefox.nix
     ../ghostty/ghostty.nix
+    ../syncthing/syncthing.nix
   ];
 
   fonts.fontconfig.enable = true;
