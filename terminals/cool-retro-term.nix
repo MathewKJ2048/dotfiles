@@ -1,8 +1,7 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{ config, pkgs, isNixOS, ... }: {
 
   home.packages = with pkgs; [
-    cool-retro-term
-  ];
+  ] ++ lib.optional isNixOS cool-retro-term;
   
   
 }

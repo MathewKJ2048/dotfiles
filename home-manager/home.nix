@@ -29,6 +29,7 @@
     ../vscodium/vscodium.nix
     ../firefox/firefox.nix
     ../terminals/ghostty/ghostty.nix
+    ../terminals/cool-retro-term.nix
     ../syncthing/syncthing.nix
 
     ../toolchains/java.nix
