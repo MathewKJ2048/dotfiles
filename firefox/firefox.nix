@@ -2,6 +2,7 @@
   
   programs.firefox = {
       enable = isNixOS;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles.default = {
           settings = {
 
