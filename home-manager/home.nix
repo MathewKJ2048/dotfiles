@@ -28,7 +28,7 @@
     ../shell/zsh.nix
     ../vscodium/vscodium.nix
     ../firefox/firefox.nix
-    ../ghostty/ghostty.nix
+    ../terminals/ghostty/ghostty.nix
     ../syncthing/syncthing.nix
 
     ../toolchains/java.nix

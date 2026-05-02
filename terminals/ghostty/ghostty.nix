@@ -4,7 +4,7 @@
   
   home.file = {
     "${config.xdg.configHome}/ghostty/config" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${userConf.thisDirectory}/ghostty/config";
+      source = config.lib.file.mkOutOfStoreSymlink "${userConf.thisDirectory}/terminals/ghostty/config";
       force = true;
     };
   };
