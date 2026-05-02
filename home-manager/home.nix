@@ -30,6 +30,8 @@
     ../firefox/firefox.nix
     ../ghostty/ghostty.nix
     ../syncthing/syncthing.nix
+
+    ../toolchains/java.nix
   ];
 
   fonts.fontconfig.enable = true;
