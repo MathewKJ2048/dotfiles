@@ -7,9 +7,10 @@
   
   # not using mkOutOfStoreSymlink because colors get switched all the time
 
-  # home.file = {
-  #   "${config.xdg.configHome}/VSCodium/User/settings.json" = {
-  #     source = "${userConf.thisDirectory}/vscodium/settings-template.json";
-  #   };
-  # };
+  home.file = {
+    "${config.xdg.configHome}/VSCodium/User/settings.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${userConf.thisDirectory}/build/settings.json";
+      force = true;
+    };
+  };
 }
