@@ -54,7 +54,7 @@
     jetbrains-mono
     papirus-icon-theme
     imagemagick
-    yt-dlp
+    # yt-dlp
 
     # default standalone
     # thunderbird
