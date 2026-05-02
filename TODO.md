@@ -5,12 +5,12 @@
 
 ## KDE:
 
+- wallpaper switch, icon switch, etc
 
 
 
 ## Cinnamon:
 
-- guake
 
 ## Common:
 

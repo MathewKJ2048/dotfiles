@@ -6,6 +6,8 @@ This repository uses the nix package manager with flakes, and home-manager, to m
 
 ## Set-up
 
+- Run `./setup.sh` to make the build folder and set up settings for vscodium
+
 ## Non-NixOS:
 
 1) install the `nix` package manager. This involves running a shell script. Single-user mode is recommended.
