@@ -33,6 +33,7 @@
     ../syncthing/syncthing.nix
 
     ../toolchains/java.nix
+    ../toolchains/tex.nix
   ];
 
   fonts.fontconfig.enable = true;

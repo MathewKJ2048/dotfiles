@@ -1,7 +1,8 @@
 { config, pkgs, ... }: {
 
-  home.packages = with pkgs; [
-    texliveFull
-  ];
+  programs.java = with pkgs; {
+    enable = true;
+    package = openjdk25;
+  };
 
 }
