@@ -24,34 +24,24 @@
   # environment.
 
   imports = [ 
-    ../git/git.nix
-    ../shell/zsh.nix
-    ../vscodium/vscodium.nix
-    ../firefox/firefox.nix
-    ../terminals/ghostty/ghostty.nix
-    ../terminals/cool-retro-term.nix
-    ../syncthing/syncthing.nix
+    ../development/git.nix
+    ../development/toolchains.nix
 
-    ../toolchains/java.nix
-    ../toolchains/web.nix
-    ../toolchains/tex.nix
+    ../apps/vscodium.nix
+    ../apps/firefox.nix
+    ../apps/ghostty.nix
+    ../apps/cool-retro-term.nix
+    ../apps/syncthing.nix
+
+    ../shell/cli-tools.nix
+    ../shell/fastfetch.nix
+    ../shell/zsh.nix
+    # fzf-tab
+
   ];
 
   fonts.fontconfig.enable = true;
 
-
-  # programs.sfxr.enable = isNixOS;
-  # programs.lmms.enable = isNixOS;
-
-  
-  # programs.vlc.enable = isNixOS;
-  # programs.thunderbird.enable = isNixOS;
-
-  # gaming
-  # programs.ruffle.enable = isNixOS;
-  # programs.aisleriot.enable = isNixOS;
-  #programs.space-cadet-pinball = isNixOS;
-  # mindustry, naev, xonotic, tuxcart, supertuxbro, wesnoth, windows vs tux, minetest
 
   home.packages = with pkgs; [
     
@@ -59,15 +49,7 @@
     jetbrains-mono
     papirus-icon-theme
     imagemagick
-    # yt-dlp
-
-    # default standalone
-    # thunderbird
-    # vlc
-    # lmms
-    # sfxr
-    # ruffle
-    # games - tuxcart, mindustry, naev, pinball etc
+    # cursor DMZ white
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

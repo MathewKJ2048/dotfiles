@@ -1,1 +1,3 @@
 
+nix-collect-garbage
+
