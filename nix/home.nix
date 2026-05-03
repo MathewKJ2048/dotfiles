@@ -33,6 +33,7 @@
     ../syncthing/syncthing.nix
 
     ../toolchains/java.nix
+    ../toolchains/web.nix
     ../toolchains/tex.nix
   ];
 
