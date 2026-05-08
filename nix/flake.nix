@@ -12,7 +12,7 @@
     { nixpkgs, home-manager, ... }:
     let
 
-      userConf = import ../conf.nix;
+      userConf = import ./conf.nix;
       pkgs = nixpkgs.legacyPackages.${userConf.system}; # this is efficient to enable quick eval. This does not mean "old" packages
       commonSpecialArgs = {
           inherit userConf;
@@ -26,7 +26,7 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ 
-          ../home-manager/home.nix
+          ./home.nix
         ];
 
         # Optionally use extraSpecialArgs to pass through arguments to home.nix
@@ -40,12 +40,12 @@
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
           modules = [
-            ../nixos/configuration.nix
+            ./configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ../home-manager/home.nix;
+              home-manager.users.${userConf.username} = import ./home.nix;
               home-manager.extraSpecialArgs = commonSpecialArgs;
             }
           ];

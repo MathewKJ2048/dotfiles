@@ -2,8 +2,16 @@
 
   
   home.packages = with pkgs; [
-    nodejs # web development
-    texliveFull # tex
+    
+    # web development
+    nodejs
+
+    # python
+
+    # rust
+
+    # tex
+    texliveFull
   ];
 
   # java development
@@ -11,9 +19,5 @@
     enable = true;
     package = openjdk25;
   };
-
-  # python development
-
-  # rust development
   
 }
