@@ -1,11 +1,10 @@
 { config, pkgs, userConf, isNixOS, ... }: {
 
-  programs.vscode = {
+  programs.vscodium = {
     enable = isNixOS;
     package = pkgs.vscodium;
   };
-  
-  # not using mkOutOfStoreSymlink because colors get switched all the time
+
 
   home.file = {
     "${config.xdg.configHome}/VSCodium/User/settings.json" = {
