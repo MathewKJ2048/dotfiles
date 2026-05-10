@@ -1,9 +1,8 @@
-{ config, pkgs, userConf, ... }: {
+{ config, pkgs, userConf, isNixOS, ... }: {
 
-  # home.packages = with pkgs; [
-  # ] ++ lib.optional userConf.CinnamonX11 tdrop;
+  # guake needed only if cinnamon X11 and isNixOS
 
-  # guake needed only if cinnamon X11 and isNixOS, but config needed always
-  
-  
+  home.packages = with pkgs; [
+  ] ++ lib.optional (userConf.CinnamonX11 && isNixOS) guake;
+
 }

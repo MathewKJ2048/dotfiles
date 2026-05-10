@@ -31,6 +31,7 @@
     ../apps/firefox.nix
     ../apps/ghostty.nix
     ../apps/cool-retro-term.nix
+    ../apps/guake.nix
     ../apps/syncthing.nix
 
     ../shell/cli-tools.nix
