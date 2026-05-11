@@ -59,7 +59,7 @@
     };
 
     initContent = ''
-      export PROMPT='%~▶'
+      export PROMPT='%~❯'
 
       if [ -f "$HOME/.zsh_custom" ]; then
         source "$HOME/.zsh_custom"
