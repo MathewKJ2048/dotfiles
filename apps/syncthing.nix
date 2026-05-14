@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{pkgs, ... }: {
 
   home.packages = with pkgs; [
     syncthing

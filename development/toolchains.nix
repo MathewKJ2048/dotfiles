@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
   
   home.packages = with pkgs; [
@@ -22,6 +22,7 @@
     enable = true;
     package = openjdk25;
   };
+
 
   
 }

@@ -1,8 +1,7 @@
 { config, pkgs, lib, userConf, ... }: {
 
-  imports = [
-    ./fastfetch.nix
-    ./cli-tools.nix
+  home.packages = with pkgs; [
+    zsh-fzf-tab
   ];
 
   programs.zoxide.enableZshIntegration = true;
@@ -20,6 +19,14 @@
     dotDir = zshConfigPath;
     syntaxHighlighting.enable = true;
 
+    plugins = [
+      {
+        name = pkgs.zsh-fzf-tab.name;
+        src = pkgs.zsh-fzf-tab.src;
+        file = "fzf-tab.plugin.zsh";
+      }
+    ];
+
     history = {
       share = true; # all zsh instances share history
       size = 10000; # number of lines
@@ -27,14 +34,17 @@
       append = true; # concurrent zsh sessions append their history list to the file, instead of overwriting
     };
 
-    completionInit = '' 
-        autoload -U compinit 
-        compinit
+    # completionInit = '' 
+    #    autoload -U compinit 
+    #    compinit
 
-        zstyle ':completion:*' menu select yes
-        zstyle ':completion:*' list-colors ${"$"}{(s.:.)LS_COLORS}
         
-    ''; # these need to be written explicitly, there is no boolean option to autoload compinit
+        
+        
+    # ''; # these need to be written explicitly, there is no boolean option to autoload compinit
+
+    # zstyle ':completion:*' menu select yes
+    # zstyle ':completion:*' list-colors ${"$"}{(s.:.)LS_COLORS}
 
     shellAliases = {
       # general
@@ -59,6 +69,11 @@
     };
 
     initContent = ''
+
+      zstyle ':completion:*' list-colors ${"$"}{(s.:.)LS_COLORS}
+      zstyle ':completion:*' menu no
+      zstyle ':fzf-tab:*' fzf-flags '--color=16'
+
       export PROMPT='%~❯'
 
       if [ -f "$HOME/.zsh_custom" ]; then

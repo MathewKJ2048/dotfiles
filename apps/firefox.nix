@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{ config, isNixOS, ... }: {
   
   programs.firefox = {
       enable = isNixOS;

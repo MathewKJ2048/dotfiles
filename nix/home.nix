@@ -37,7 +37,6 @@
     ../shell/cli-tools.nix
     ../shell/fastfetch.nix
     ../shell/zsh.nix
-    # fzf-tab
 
   ];
 

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ pkgs, ... }: {
 
   home.packages = with pkgs; [
     cmatrix # matrix characters
@@ -16,24 +16,17 @@
 
   programs.ripgrep.enable = true; # better grep, written in rust
   programs.bat.enable = true; # better cat, written in rust
+  programs.zoxide.enable = true;  # better cd, written in rust
+  programs.dircolors.enable = true; # used to get LS_COLORS
 
   programs.fzf = { # fuzzy-finding
     enable = true;
-    enableZshIntegration = true;
     defaultOptions = [
       "--color=16"
     ];
   };
 
-  programs.zoxide = { # better cd, written in rust
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.dircolors = { # used to get LS_COLORS
-    enable = true;
-    enableZshIntegration = true;
-  };
+  
 
   
 

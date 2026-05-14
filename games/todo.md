@@ -1,5 +1,12 @@
-# gaming
-  # programs.ruffle.enable = isNixOS;
-  # programs.aisleriot.enable = isNixOS;
-  # programs.space-cadet-pinball = isNixOS;
-  # mindustry, naev, xonotic, tuxcart, supertuxbro, wesnoth, windows vs tux, minetest
+mindustry, 
+naev, 
+xonotic, 
+tuxcart, 
+supertuxbro, 
+wesnoth, 
+windows vs tux, 
+minetest/luanti etc
+openttd
+space-cadet-pinball
+aisleriot
+ruffle

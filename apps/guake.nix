@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{ pkgs, userConf, isNixOS, ... }: {
 
   # guake needed only if cinnamon X11 and isNixOS
 
