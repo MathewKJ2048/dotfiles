@@ -12,6 +12,9 @@
 
     # tex
     texliveFull
+
+    # nix
+    nixd
   ];
 
   # java development
@@ -19,5 +22,6 @@
     enable = true;
     package = openjdk25;
   };
+
   
 }
