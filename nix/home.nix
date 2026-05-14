@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, isNixOS, ... }:
+{ pkgs, userConf, isNixOS, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should

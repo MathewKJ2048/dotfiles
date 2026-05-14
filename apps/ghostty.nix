@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{ config, userConf, isNixOS, ... }: {
 
   programs.ghostty.enable = isNixOS;
   
