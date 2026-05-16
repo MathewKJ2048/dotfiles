@@ -33,6 +33,8 @@
     ../apps/cool-retro-term.nix
     ../apps/guake.nix
     ../apps/syncthing.nix
+    ../apps/mpv.nix
+    ../apps/vlc.nix
 
     ../shell/cli-tools.nix
     ../shell/fastfetch.nix
