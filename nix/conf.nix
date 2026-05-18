@@ -6,7 +6,7 @@ rec {
   system = "x86_64-linux";
   hostName = "nixos"; # networking hostname
 
-  KdeWayland = true; # this is when building for KDE on wayland
+  KdeWayland = false; # this is when building for KDE on wayland
   CinnamonX11 = true; # this is when building for Cinnamon on X11
 
   locale = "en_US.UTF-8";

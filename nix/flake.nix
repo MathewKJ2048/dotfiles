@@ -41,6 +41,7 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
           modules = [
             ./configuration.nix
+            ./custom-hardware-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system

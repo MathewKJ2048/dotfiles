@@ -5,10 +5,7 @@
 { pkgs, userConf, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./custom-hardware-configuration.nix
-    ];
+  
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
