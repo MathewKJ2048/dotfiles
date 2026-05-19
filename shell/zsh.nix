@@ -111,6 +111,19 @@
       {
         fd $1 | fzf | xargs open
       }
+      music()
+      {
+          # fuzzyfinding and running music
+          local preview_command="
+          ffmpeg -ss 00:00:05 -i {} -frames:v 1 -f image2pipe -vcodec png - 2>/dev/null | chafa --clear
+          "
+          file=$(find ~/Music/ -type f | fzf --preview "$preview_command" --delimiter='/' --with-nth 5..)
+          if [[ -n "$file" && -f "$file" ]]; then
+              echo "A/Z - volume up/down"
+              echo "L/K/J - pitch up/reset/down"
+              mpv "$file" --vo=null --loop
+          fi
+      }
 
     '';
   };
