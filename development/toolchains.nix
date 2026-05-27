@@ -9,6 +9,10 @@
     # python
 
     # rust
+    rustc # compiler
+    cargo # package manager
+    clippy # linter
+    rust-analyzer # language server
 
     # tex
     texliveMedium
