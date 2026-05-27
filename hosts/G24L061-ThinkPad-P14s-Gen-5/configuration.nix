@@ -24,7 +24,7 @@
   # Set your time zone.
   time.timeZone = userConf.timeZone;
 
-  # Select internationalization properties.
+  # Select internationalisation properties.
   i18n.defaultLocale = userConf.locale;
 
   i18n.extraLocaleSettings = let locale = userConf.locale; in {

@@ -7,6 +7,7 @@
 
 - wallpaper switch, icon switch, etc
 
+- DMZ-white cursor
 
 
 ## Cinnamon:
@@ -24,6 +25,12 @@
 ## Custom scripts:
 - calendar
 - todo
+
+## Misc:
+
+- Qemu/KVM
+- organize hosts
+- set up ssh-server
 
 
 

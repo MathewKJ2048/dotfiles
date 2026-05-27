@@ -4,7 +4,7 @@ rec {
   email = "mathewkj2048@gmail.com"; 
 
   system = "x86_64-linux";
-  hostName = "nixos"; # networking hostname
+  
 
   KdeWayland = false; # this is when building for KDE on wayland
   CinnamonX11 = true; # this is when building for Cinnamon on X11
