@@ -68,7 +68,7 @@
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ./home.nix;
+              home-manager.users.${userConf.username} = import ../home-manager/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
@@ -91,7 +91,7 @@
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ./home.nix;
+              home-manager.users.${userConf.username} = import ../home-manager/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
@@ -114,7 +114,7 @@
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ./home.nix;
+              home-manager.users.${userConf.username} = import ../home-manager/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
