@@ -8,44 +8,33 @@
     };
   };
 
-  let
-    userConf = rec {
-      name = "mathew";
-      fullName = "Mathew Kuthur James";
-      email = "mathewkj2048@gmail.com"; 
-
-      system = "x86_64-linux";
-      
-      KdeWayland = false; # this is when building for KDE on wayland
-      CinnamonX11 = true; # this is when building for Cinnamon on X11
-
-      locale = "en_US.UTF-8";
-      timeZone = "America/New_York";
-      keyboardLayout = "us";
-      
-      username = name;
-      homeDirectory = "/home/${username}";
-      downloadsDirectory = "${homeDirectory}/Downloads"; 
-      desktopDirectory = "${homeDirectory}/Desktop";
-      thisDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
-      screenshotsDirecory = desktopDirectory; # location to which screenshots are saved
-      videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
-      
-      gitArgs  = {
-        inherit email; # email for git, used for signing commits
-        name = fullName; # name for git, used for signing commits
-      };
-
-    }
-  in
   outputs =
     { nixpkgs, home-manager, ... }:
     let
-      pkgs = nixpkgs.legacyPackages.${userConf.system}; # this is efficient to enable quick eval. This does not mean "old" packages
+      userConf = rec {
+        name = "mathew";
+        fullName = "Mathew Kuthur James";
+        email = "mathewkj2048@gmail.com"; 
+
+        username = name;
+        homeDirectory = "/home/${username}";
+        downloadsDirectory = "${homeDirectory}/Downloads"; 
+        desktopDirectory = "${homeDirectory}/Desktop";
+        thisDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
+        screenshotsDirecory = desktopDirectory; # location to which screenshots are saved
+        videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
+        
+        gitArgs  = {
+          inherit email; # email for git, used for signing commits
+          name = fullName; # name for git, used for signing commits
+        };
+      };
+       
     in
     {
-      homeConfigurations."${userConf.username}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      homeConfigurations."ThinkPad-L14-Gen-3" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        # this is efficient to enable quick eval. This does not mean "old" packages
         
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
@@ -58,31 +47,79 @@
         extraSpecialArgs = {
           inherit userConf;
           isNixOS = false;
+          KdeWayland = false; # this is when building for KDE on wayland
+          CinnamonX11 = true; # this is when building for Cinnamon on X11
         };
-        
       };
 
-      # let
-      #   commonSpecialArgs = {
-      #     inherit userConf;
-      #     isNixOS = true;
-      # };
-      # in
+      nixosConfigurations."G24L061-ThinkPad-P14s-Gen-5" = 
+      let 
+        specialArgs = {
+          inherit userConf;
+          isNixOS = true;
+          KdeWayland = true;
+          CinnamonX11 = true;
+        };
+      in nixpkgs.lib.nixosSystem {
+          modules = [
+            ../hosts/G24L061-ThinkPad-P14s-Gen-5/configuration.nix
+            ../hosts/G24L061-ThinkPad-P14s-Gen-5/hardware-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+              home-manager.users.${userConf.username} = import ./home.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+      };
 
-      # nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      #     modules = [
-      #       ./configuration.nix
-      #       ./custom-hardware-configuration.nix
-      #       home-manager.nixosModules.home-manager
-      #       {
-      #         home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-      #         home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-      #         home-manager.users.${userConf.username} = import ./home.nix;
-      #         home-manager.extraSpecialArgs = commonSpecialArgs;
-      #       }
-      #     ];
-      #     specialArgs = commonSpecialArgs;
-      #   };
+      nixosConfigurations."nixos-qemu-vm" = 
+      let 
+        specialArgs = {
+          inherit userConf;
+          isNixOS = true;
+          KdeWayland = true;
+          CinnamonX11 = false;
+        };
+      in nixpkgs.lib.nixosSystem {
+          modules = [
+            ../hosts/nixos-qemu-vm/configuration.nix
+            ../hosts/nixos-qemu-vm/hardware-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+              home-manager.users.${userConf.username} = import ./home.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+      };
+
+      nixosConfigurations."mathew-dell-inspiron" = 
+      let 
+        specialArgs = {
+          inherit userConf;
+          isNixOS = true;
+          KdeWayland = true;
+          CinnamonX11 = false;
+        };
+      in nixpkgs.lib.nixosSystem {
+          modules = [
+            ../hosts/mathew-dell-inspiron/configuration.nix
+            ../hosts/mathew-dell-inspiron/hardware-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+              home-manager.users.${userConf.username} = import ./home.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+      };
 
       
     };
