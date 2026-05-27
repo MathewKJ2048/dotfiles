@@ -11,7 +11,7 @@
     # rust
 
     # tex
-    texliveFull
+    texliveMedium
 
     # nix
     nixd
