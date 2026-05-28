@@ -119,8 +119,9 @@
           "
           file=$(find ~/Music/ -type f | fzf --preview "$preview_command" --delimiter='/' --with-nth 5..)
           if [[ -n "$file" && -f "$file" ]]; then
+              echo "playing: $file"
               echo "A/Z - volume up/down"
-              echo "L/K/J - pitch up/reset/down"
+              echo "J/K/L - pitch down/reset/up"
               mpv "$file" --vo=null --loop
           fi
       }

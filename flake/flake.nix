@@ -32,18 +32,11 @@
        
     in
     {
-      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."default" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        # this is efficient to enable quick eval. This does not mean "old" packages
-        
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [ 
           ../home-manager/default.nix
         ];
-
-        # Optionally use extraSpecialArgs to pass through arguments to home.nix
-        # extraSpecialArgs is for home configurations, specialArgs is for nixOS configs
         extraSpecialArgs = {
           inherit userConf;
           isNixOS = false;
@@ -62,65 +55,70 @@
         };
       in nixpkgs.lib.nixosSystem {
           modules = [
-            ../hosts/G24L061-ThinkPad-P14s-Gen-5/configuration.nix
-            ../hosts/G24L061-ThinkPad-P14s-Gen-5/hardware-configuration.nix
+            ../nixos/configurations/laptop.nix
+            ../hardware-configurations/ThinkPad-P14s-Gen-5.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ../home-manager/home.nix;
+              home-manager.users.${userConf.username} = import ../home-manager/default.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
           specialArgs = specialArgs;
       };
 
-      nixosConfigurations."nixos-qemu-vm" = 
-      let 
-        specialArgs = {
-          inherit userConf;
-          isNixOS = true;
-          KdeWayland = true;
-          CinnamonX11 = false;
-        };
-      in nixpkgs.lib.nixosSystem {
-          modules = [
-            ../hosts/nixos-qemu-vm/configuration.nix
-            ../hosts/nixos-qemu-vm/hardware-configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ../home-manager/home.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-          specialArgs = specialArgs;
-      };
-
-      nixosConfigurations."mathew-dell-inspiron" = 
-      let 
-        specialArgs = {
-          inherit userConf;
-          isNixOS = true;
-          KdeWayland = true;
-          CinnamonX11 = false;
-        };
-      in nixpkgs.lib.nixosSystem {
-          modules = [
-            ../hosts/mathew-dell-inspiron/configuration.nix
-            ../hosts/mathew-dell-inspiron/hardware-configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ../home-manager/home.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-          specialArgs = specialArgs;
-      };
-
-      
     };
 }
+
+/*
+Template: NixOS configuration
+
+nixosConfigurations."G24L061-ThinkPad-P14s-Gen-5" = 
+  let 
+    specialArgs = {
+      inherit userConf;
+      isNixOS = true;
+      KdeWayland = true;
+      CinnamonX11 = true;
+    };
+  in nixpkgs.lib.nixosSystem {
+      modules = [
+        ../hosts/G24L061-ThinkPad-P14s-Gen-5/configuration.nix
+        ../hosts/G24L061-ThinkPad-P14s-Gen-5/hardware-configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+          home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+          home-manager.users.${userConf.username} = import ../home-manager/home.nix;
+          home-manager.extraSpecialArgs = specialArgs;
+        }
+      ];
+      specialArgs = specialArgs;
+  };
+
+*/
+
+/*
+Template: Home-manager configuration
+
+homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
+  pkgs = nixpkgs.legacyPackages.x86_64-linux;
+  # this is efficient to enable quick eval. This does not mean "old" packages
+  
+  # Specify your home configuration modules here, for example,
+  # the path to your home.nix.
+  modules = [ 
+    ../home-manager/default.nix
+  ];
+
+  # Optionally use extraSpecialArgs to pass through arguments to home.nix
+  # extraSpecialArgs is for home configurations, specialArgs is for nixOS configs
+  extraSpecialArgs = {
+    inherit userConf;
+    isNixOS = false;
+    KdeWayland = false; # this is when building for KDE on wayland
+    CinnamonX11 = true; # this is when building for Cinnamon on X11
+  };
+};
+*/
