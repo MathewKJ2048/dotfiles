@@ -15,7 +15,7 @@
     rust-analyzer # language server
 
     # tex
-    texliveMedium
+    texliveFull
 
     # nix
     nixd
