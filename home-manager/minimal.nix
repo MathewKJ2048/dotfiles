@@ -7,8 +7,8 @@
     ./minimal.nix
 
     ../modules/apps/vscodium.nix # text editor
-    ../modules/apps/firefox.nix  # browser
-    ../modules/apps/ghostty.nix  # terminal
+    ../modules/apps/browsers/firefox.nix  # browser
+    ../modules/apps/terminals/ghostty.nix  # terminal
 
     ../modules/networking/networking.nix
     ../modules/theme/theme.nix

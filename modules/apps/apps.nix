@@ -1,10 +1,14 @@
 { config, pkgs, lib, userConf, ... }: {
 
   imports = [
-    ./cool-retro-term.nix
-    ./firefox.nix
-    ./ghostty.nix
-    ./guake.nix
+    ./browsers/firefox.nix
+    ./browsers/librewolf.nix
+    ./browsers/tor.nix
+
+    ./terminals/cool-retro-term.nix
+    ./terminals/ghostty.nix
+    ./terminals/guake.nix
+    
     ./mpv.nix
     ./qemu.nix
     ./vlc.nix
