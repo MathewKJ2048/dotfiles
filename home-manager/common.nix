@@ -22,16 +22,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  imports = [
-    ../modules/apps/apps.nix
-    ../modules/development/development.nix
-    ../modules/games/games.nix
-    ../modules/networking/networking.nix
-    ../modules/shell/shell.nix
-    ../modules/theme/theme.nix
-    ../modules/tools/tools.nix
-  ];
-
   home.packages = with pkgs; [
     
     # # It is sometimes useful to fine-tune packages, for example, by applying
