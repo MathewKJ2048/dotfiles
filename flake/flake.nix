@@ -21,7 +21,7 @@
         downloadsDirectory = "${homeDirectory}/Downloads"; 
         desktopDirectory = "${homeDirectory}/Desktop";
         thisDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
-        screenshotsDirecory = desktopDirectory; # location to which screenshots are saved
+        screenshotsDirectory = desktopDirectory; # location to which screenshots are saved
         videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
         
         gitArgs  = {
@@ -32,7 +32,7 @@
        
     in
     {
-      homeConfigurations."ThinkPad-L14-Gen-3" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         # this is efficient to enable quick eval. This does not mean "old" packages
         

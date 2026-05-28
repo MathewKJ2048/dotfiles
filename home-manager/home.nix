@@ -6,7 +6,6 @@
   home.username = userConf.username;
   home.homeDirectory = userConf.homeDirectory;
 
-
   xdg.enable = true;
   xdg.mime.enable = true;
   targets.genericLinux.enable = !isNixOS;
@@ -23,40 +22,18 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  imports = [ 
-    ../development/git.nix
-    ../development/toolchains.nix
-
-    ../apps/vscodium.nix
-    ../apps/firefox.nix
-    ../apps/ghostty.nix
-    ../apps/cool-retro-term.nix
-    ../apps/guake.nix
-    ../apps/mpv.nix
-    ../apps/vlc.nix
-
-    ../shell/cli-tools.nix
-    ../shell/fastfetch.nix
-    ../shell/zsh.nix
-
-    ../networking/syncthing.nix
-
+  imports = [
+    ../modules/apps/apps.nix
+    ../modules/development/development.nix
+    ../modules/games/games.nix
+    ../modules/networking/networking.nix
+    ../modules/shell/shell.nix
+    ../modules/theme/theme.nix
+    ../modules/tools/tools.nix
   ];
-
-  fonts.fontconfig.enable = true;
-
 
   home.packages = with pkgs; [
     
-    # default things
-    jetbrains-mono
-    papirus-icon-theme
-    imagemagick
-    # cursor DMZ white
-
-    yt-dlp
-
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of

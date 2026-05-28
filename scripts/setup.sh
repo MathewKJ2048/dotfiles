@@ -2,4 +2,4 @@
 
 mkdir -p ./build
 
-cp -f ./apps/vscodium-settings-template.json ./build/settings.json
+cp -f ./config/vscodium-settings-template.json ./config/vscodium-settings.json

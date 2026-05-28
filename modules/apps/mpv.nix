@@ -8,7 +8,7 @@
     builtins.mapAttrs
       (key: value: {
         # symlink ${userConf.thisDirectory}/apps/${value} -> {key}
-        source = config.lib.file.mkOutOfStoreSymlink "${userConf.thisDirectory}/apps/${value}";
+        source = config.lib.file.mkOutOfStoreSymlink "${userConf.thisDirectory}/config/${value}";
         force = true;
       })
       {
