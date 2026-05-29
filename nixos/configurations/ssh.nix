@@ -2,9 +2,6 @@
 { pkgs, userConf, systemConf, ... }:
 
 {
-  imports = [
-    ./common-headless.nix
-  ];
 
   services.openssh = {
     enable = true;
