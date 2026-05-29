@@ -45,10 +45,11 @@
         };
       };
 
-      nixosConfigurations."G24L061-ThinkPad-P14s-Gen-5" = 
+      nixosConfigurations."G24L061" = 
       let 
         specialArgs = {
           inherit userConf;
+          hostName = "G24L061-ThinkPad-P14s-Gen-5";
           isNixOS = true;
           KdeWayland = true;
           CinnamonX11 = true;

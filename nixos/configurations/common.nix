@@ -1,0 +1,50 @@
+
+{ pkgs, userConf, ... }:
+
+{
+  imports = [
+    ./common-headless.nix
+  ];
+
+  # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
+  services.xserver.enable = true;
+
+  # Display Manager
+  services.xserver.displayManager.lightdm = {
+    enable = true;
+    greeters.slick.enable = true;
+  };
+
+  # Enable the Desktop environments
+  services.desktopManager.plasma6.enable = userConf.KdeWayland;
+  services.xserver.desktopManager.cinnamon.enable = userConf.CinnamonX11;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = userConf.keyboardLayout;
+    variant = "";
+  };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+}
