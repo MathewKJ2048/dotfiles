@@ -34,8 +34,8 @@
     let
       systemConf = {
         isNixOS = false;
-        KdeWayland = false;
-        CinnamonX11 = false;
+        KDE = false;
+        Cinnamon = false;
       };
     in
     home-manager.lib.homeManagerConfiguration {
@@ -54,11 +54,11 @@
       systemConf = {
         isNixOS = true;
         sshPasswordAuth = true;
-        KdeWayland = true;
-        CinnamonX11 = false;
+        KDE = false;
+        Cinnamon = false;
         hostName = "bootstrap";
         locale = "en_US.UTF-8";
-        timeZone = "America/Toronto";
+        timeZone = "America/New York";
         keyboardLayout = "us";
       };
       specialArgs = {
@@ -67,12 +67,13 @@
       };
     in nixpkgs.lib.nixosSystem {
         modules = [
-          ../configuration.nix
+          ../temp/configuration.nix
+          ../nixos/configurations/ssh.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
             home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-            home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+            home-manager.users.${userConf.username} = ../home-manager/minimal-headless.nix;
             home-manager.extraSpecialArgs = specialArgs;
           }
         ];
@@ -85,8 +86,8 @@
       systemConf = {
         isNixOS = true;
         sshPasswordAuth = true;
-        KdeWayland = true;
-        CinnamonX11 = false;
+        KDE = true;
+        Cinnamon = false;
         hostName = "qemu-vm";
         locale = "en_US.UTF-8";
         timeZone = "America/Toronto";
