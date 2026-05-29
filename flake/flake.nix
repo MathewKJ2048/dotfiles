@@ -80,8 +80,7 @@
         };
       in nixpkgs.lib.nixosSystem {
           modules = [
-            ../nixos/configurations/server.nix
-            ../placeholder.nix
+            ../configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
