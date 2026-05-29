@@ -1,4 +1,4 @@
-{ pkgs, userConf, systemConf, ... }:
+{ pkgs, config, userConf, systemConf, ... }:
 
 {
 
