@@ -49,13 +49,24 @@
       };
     };
 
-    nixosConfigurations."bootstrap" = 
+    /*
+    time.timeZone = "America/Toronto";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_CA.UTF-8";
+    */
+
+    nixosConfigurations."qemu-vm" = 
     let 
       systemConf = {
         isNixOS = true;
-        KdeWayland = false;
+        sshPasswordAuth = true;
+        KdeWayland = true;
         CinnamonX11 = false;
-        hostName = "bootstrap";
+        hostName = "qemu-vm";
+        locale = "en_US.UTF-8";
+        timeZone = "America/Toronto";
+        keyboardLayout = "us";
       };
       specialArgs = {
         inherit userConf;
@@ -63,7 +74,8 @@
       };
     in nixpkgs.lib.nixosSystem {
         modules = [
-          ../configuration.nix
+          ../nixos/configurations/virtual-machine-guest.nix
+          ../nixos/hardware-configurations/qemu-intel-guest.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system

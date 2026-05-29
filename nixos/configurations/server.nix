@@ -10,7 +10,7 @@
     enable = true;
     ports = [ 42 ];
     settings = {
-      PasswordAuthentication = false;
+      PasswordAuthentication = systemConf.sshPasswordAuth;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
     };

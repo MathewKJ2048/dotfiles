@@ -17,12 +17,12 @@
   };
 
   # Enable the Desktop environments
-  services.desktopManager.plasma6.enable = userConf.KdeWayland;
-  services.xserver.desktopManager.cinnamon.enable = userConf.CinnamonX11;
+  services.desktopManager.plasma6.enable = systemConf.KdeWayland;
+  services.xserver.desktopManager.cinnamon.enable = systemConf.CinnamonX11;
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = userConf.keyboardLayout;
+    layout = systemConf.keyboardLayout;
     variant = "";
   };
 

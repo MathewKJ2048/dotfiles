@@ -5,10 +5,6 @@
 { pkgs, userConf, systemConf, ... }:
 
 {
-  
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = systemConf.hostName; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -21,12 +17,12 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = userConf.timeZone;
+  time.timeZone = systemConf.timeZone;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = userConf.locale;
+  i18n.defaultLocale = systemConf.locale;
 
-  i18n.extraLocaleSettings = let locale = userConf.locale; in {
+  i18n.extraLocaleSettings = let locale = systemConf.locale; in {
     LC_ADDRESS = locale;
     LC_IDENTIFICATION = locale;
     LC_MEASUREMENT = locale;
