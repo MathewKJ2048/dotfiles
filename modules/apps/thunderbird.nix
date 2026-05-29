@@ -1,4 +1,4 @@
-{ config, isNixOS, ... }: {
+{ config, systemConf, ... }: {
   
   
 }

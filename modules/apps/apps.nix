@@ -1,4 +1,4 @@
-{ config, pkgs, lib, userConf, ... }: {
+{ config, pkgs, lib, userConf, systemConf, ... }: {
 
   imports = [
     ./browsers/firefox.nix

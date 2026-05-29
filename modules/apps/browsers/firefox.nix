@@ -1,7 +1,7 @@
-{ config, isNixOS, ... }: {
+{ config, systemConf, ... }: {
   
   programs.firefox = {
-      enable = isNixOS;
+      enable = systemConf.isNixOS;
       configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles.default = {
           settings = {

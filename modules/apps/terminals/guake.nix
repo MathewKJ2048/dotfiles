@@ -1,8 +1,8 @@
-{ pkgs, userConf, isNixOS, CinnamonX11, ... }: {
+{ pkgs, userConf, systemConf, ... }: {
 
   # guake needed only if cinnamon X11 and isNixOS
 
   home.packages = with pkgs; [
-  ] ++ lib.optional (CinnamonX11 && isNixOS) guake;
+  ] ++ lib.optional && systemConf.isNixOS guake;
 
 }

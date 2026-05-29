@@ -1,7 +1,7 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{ config, pkgs, userConf, systemConf, ... }: {
 
   home.packages = with pkgs; [
-  ] ++ lib.optional isNixOS mpv;
+  ] ++ lib.optional systemConf.isNixOS mpv;
   
 
   home.file =

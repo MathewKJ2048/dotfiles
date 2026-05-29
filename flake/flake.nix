@@ -32,27 +32,34 @@
        
     in
     {
-      homeConfigurations."default" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."default" = 
+      let
+        systemConf = {
+          isNixOS = false;
+          KdeWayland = false;
+          CinnamonX11 = true;
+        }
+      in home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [ 
           ../home-manager/default.nix
         ];
         extraSpecialArgs = {
           inherit userConf;
-          isNixOS = false;
-          KdeWayland = false; # this is when building for KDE on wayland
-          CinnamonX11 = true; # this is when building for Cinnamon on X11
+          inherit systemConf;
         };
       };
 
       nixosConfigurations."G24L061" = 
       let 
-        specialArgs = {
-          inherit userConf;
-          hostName = "G24L061-ThinkPad-P14s-Gen-5";
+        systemConf = {
           isNixOS = true;
           KdeWayland = true;
           CinnamonX11 = true;
+        };
+        specialArgs = {
+          inherit userConf;
+          inherit systemConf;
         };
       in nixpkgs.lib.nixosSystem {
           modules = [
@@ -71,12 +78,14 @@
 
       nixosConfigurations."bootstrap" = 
       let 
+        systemConf = {
+          isNixOS = true;
+          KdeWayland = false;
+          CinnamonX11 = false;
+        };
         specialArgs = {
           inherit userConf;
-          hostName = "bootstrap";
-          isNixOS = true;
-          KdeWayland = true;
-          CinnamonX11 = false;
+          inherit systemConf;
         };
       in nixpkgs.lib.nixosSystem {
           modules = [

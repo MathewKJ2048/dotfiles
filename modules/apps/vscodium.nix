@@ -1,7 +1,7 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{ config, pkgs, userConf, systemConf, ... }: {
 
   programs.vscodium = {
-    enable = isNixOS;
+    enable = systemConf.isNixOS;
     package = pkgs.vscodium;
   };
 

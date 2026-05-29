@@ -1,6 +1,6 @@
-{ config, userConf, isNixOS, ... }: {
+{ config, userConf, systemConf, ... }: {
 
-  programs.ghostty.enable = isNixOS;
+  programs.ghostty.enable = systemConf.isNixOS;
   
   home.file = {
     "${config.xdg.configHome}/ghostty/config" = {

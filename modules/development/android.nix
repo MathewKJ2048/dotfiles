@@ -1,4 +1,4 @@
-{ config, pkgs, userConf, isNixOS, ... }: {
+{ config, pkgs, userConf, systemConf, ... }: {
 
   
   

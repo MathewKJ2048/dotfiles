@@ -1,6 +1,6 @@
 { pkgs, userConf, isNixOS, ... }:
 
-{ pkgs, userConf, isNixOS, ... }:
+{ pkgs, userConf, systemConf, ... }:
 
 {
   imports = [
