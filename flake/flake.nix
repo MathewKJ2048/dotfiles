@@ -39,10 +39,6 @@
           KdeWayland = false;
           CinnamonX11 = false;
         };
-        specialArgs = {
-          inherit userConf;
-          inherit systemConf;
-        };
       in nixpkgs.lib.nixosSystem {
           modules = [
             ../configuration.nix
@@ -54,7 +50,10 @@
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
-          specialArgs = specialArgs;
+          specialArgs = {
+          inherit userConf;
+          inherit systemConf;
+        };
       };
 
     };
