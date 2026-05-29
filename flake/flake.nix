@@ -47,13 +47,16 @@
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
               home-manager.users.${userConf.username} = import ../home-manager/common.nix;
-              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.extraSpecialArgs = {
+                inherit userConf;
+                inherit systemConf;
+              };
             }
           ];
           specialArgs = {
-          inherit userConf;
-          inherit systemConf;
-        };
+            inherit userConf;
+            inherit systemConf;
+          };
       };
 
     };
