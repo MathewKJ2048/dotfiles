@@ -1,9 +1,5 @@
-echo "You're running the bootstrap script. This script is designed to turn this device into the configuration specified by "bootstrap" in flake.nix. It's assumed that dotfiles has been cloned into ~/Projects/dotfiles using git."
+echo "You're running the bootstrap script. This script is designed to turn this device into the configuration specified by "bootstrap" in flake.nix. It's assumed that dotfiles has been cloned into ~/Projects/dotfiles using git, and this script is being run by the user and not the root."
 
-if (( EUID != 0 )); then
-    echo "This script needs sudo privileges. Please run as root or with sudo."
-    exit 1
-fi
 
 mkdir -p ~/Projects/dotfiles/temp &&
 cp /etc/nixos/configuration.nix ~/Projects/dotfiles/temp/configuration.nix &&
@@ -14,9 +10,13 @@ echo "This system's configuration has been copied into dotfiles/temp" &&
 
 git add . &&
 
-echo "and added to git. The system will now build into the bootstrap configuration."
+echo "and added to git but not committed"
 
-nixos-rebuild switch --flake ~/Projects/dotfiles/flake#bootstrap &&
-git commit -m "dummy commit" &&
 
-echo "This system has now been bootstrapped. The changes have committed. Local edits cannot be pushed to remote. To make edits, push to remote from a machine with access, then run git pull"
+
+echo "The system can now be built into the bootstrap configuration using nixos-rebuild switch --flake <path/to/dotfiles>/flake#bootstrap"
+
+
+echo "after rebuilding, commit the changes. When making edits, edit remote and pull them. Do not make edits locally."
+
+
