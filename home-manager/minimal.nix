@@ -1,7 +1,5 @@
 { pkgs, userConf, isNixOS, ... }:
 
-{ pkgs, userConf, isNixOS, ... }:
-
 {
   imports = [
     ./minimal-headless.nix
