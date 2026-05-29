@@ -69,6 +69,30 @@
           specialArgs = specialArgs;
       };
 
+      nixosConfigurations."bootstrap" = 
+      let 
+        specialArgs = {
+          inherit userConf;
+          hostName = "bootstrap";
+          isNixOS = true;
+          KdeWayland = true;
+          CinnamonX11 = true;
+        };
+      in nixpkgs.lib.nixosSystem {
+          modules = [
+            ../nixos/configurations/server.nix
+            ../hardware-configurations/placeholder.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+              home-manager.users.${userConf.username} = import ../home-manager/minimal.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+      };
+
     };
 }
 
