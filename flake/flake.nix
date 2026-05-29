@@ -32,7 +32,34 @@
        
     in
     {
-      homeConfigurations."default" = 
+      nixosConfigurations."bootstrap" = 
+      let 
+        systemConf = {
+          isNixOS = true;
+          KdeWayland = false;
+          CinnamonX11 = false;
+        };
+        specialArgs = {
+          inherit userConf;
+          inherit systemConf;
+        };
+      in nixpkgs.lib.nixosSystem {
+          modules = [
+            ../configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+              home-manager.users.${userConf.username} = import ../home-manager/common.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+      };
+
+    };
+
+    homeConfigurations."default" = 
       let
         systemConf = {
           isNixOS = false;
@@ -75,33 +102,6 @@
           ];
           specialArgs = specialArgs;
       };
-
-      nixosConfigurations."bootstrap" = 
-      let 
-        systemConf = {
-          isNixOS = true;
-          KdeWayland = false;
-          CinnamonX11 = false;
-        };
-        specialArgs = {
-          inherit userConf;
-          inherit systemConf;
-        };
-      in nixpkgs.lib.nixosSystem {
-          modules = [
-            ../configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-              home-manager.users.${userConf.username} = import ../home-manager/common.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-          specialArgs = specialArgs;
-      };
-
-    };
 }
 
 /*
