@@ -89,7 +89,7 @@
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
-          specialArgs = specialArgs;
+          # specialArgs = specialArgs;
       };
 
     };
