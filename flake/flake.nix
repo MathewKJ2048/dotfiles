@@ -81,14 +81,14 @@
       };
 
 
-    nixosConfigurations."qemu-guest" = 
+    nixosConfigurations."qemu-guest-nixos" = 
     let 
       systemConf = {
         isNixOS = true;
         sshPasswordAuth = true;
         KDE = true;
         Cinnamon = false;
-        hostName = "qemu-vm";
+        hostName = "qemu-guest-nixos";
         locale = "en_US.UTF-8";
         timeZone = "America/Toronto";
         keyboardLayout = "us";
