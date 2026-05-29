@@ -76,7 +76,7 @@
           hostName = "bootstrap";
           isNixOS = true;
           KdeWayland = true;
-          CinnamonX11 = true;
+          CinnamonX11 = false;
         };
       in nixpkgs.lib.nixosSystem {
           modules = [
