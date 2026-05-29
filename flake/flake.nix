@@ -58,7 +58,7 @@
         Cinnamon = false;
         hostName = "bootstrap";
         locale = "en_US.UTF-8";
-        timeZone = "America/New York";
+        timeZone = "America/New_York";
         keyboardLayout = "us";
       };
       specialArgs = {
