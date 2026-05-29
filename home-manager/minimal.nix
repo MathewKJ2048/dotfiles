@@ -1,5 +1,3 @@
-{ pkgs, userConf, isNixOS, ... }:
-
 { pkgs, config, userConf, systemConf, ... }:
 
 {
