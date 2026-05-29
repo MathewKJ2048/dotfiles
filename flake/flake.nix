@@ -38,7 +38,7 @@
           isNixOS = false;
           KdeWayland = false;
           CinnamonX11 = true;
-        }
+        };
       in home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [ 

@@ -3,6 +3,6 @@
   # guake needed only if cinnamon X11 and isNixOS
 
   home.packages = with pkgs; [
-  ] ++ lib.optional && systemConf.isNixOS guake;
+  ] ++ lib.optional systemConf.isNixOS guake;
 
 }
