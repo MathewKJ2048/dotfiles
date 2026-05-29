@@ -51,9 +51,3 @@ nix-store gc
 2) git clone this repo and check the configuration in flake.nix
 
 3) 
-
-Terminals:
-
-- guake is hard to configure
-- ghostty on wayland is optimal
-- default is make it open fullscreen on a shortcut, no drop-down stuff

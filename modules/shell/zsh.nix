@@ -74,7 +74,7 @@
       zstyle ':completion:*' menu no
       zstyle ':fzf-tab:*' fzf-flags '--color=16'
 
-      export PROMPT='%~❯'
+      PROMPT='%~❯'
 
       if [ -f "$HOME/.zsh_custom" ]; then
         source "$HOME/.zsh_custom"

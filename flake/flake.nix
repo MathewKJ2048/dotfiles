@@ -49,12 +49,36 @@
       };
     };
 
-    /*
-    time.timeZone = "America/Toronto";
+    nixosConfigurations."bootstrap" = 
+    let 
+      systemConf = {
+        isNixOS = true;
+        sshPasswordAuth = true;
+        KdeWayland = true;
+        CinnamonX11 = false;
+        hostName = "bootstrap";
+        locale = "en_US.UTF-8";
+        timeZone = "America/Toronto";
+        keyboardLayout = "us";
+      };
+      specialArgs = {
+        inherit userConf;
+        inherit systemConf;
+      };
+    in nixpkgs.lib.nixosSystem {
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+            home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+            home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+            home-manager.extraSpecialArgs = specialArgs;
+          }
+        ];
+        specialArgs = specialArgs;
+      };
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_CA.UTF-8";
-    */
 
     nixosConfigurations."qemu-vm" = 
     let 
