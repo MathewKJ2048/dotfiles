@@ -1,5 +1,5 @@
 
-{ pkgs, userConf, ... }:
+{ pkgs, userConf, systemConf, ... }:
 
 {
   imports = [
