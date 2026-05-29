@@ -114,123 +114,22 @@
     };
 
 }
-    #   nixosConfigurations."bootstrap" = nixpkgs.lib.nixosSystem {
-    #       modules = [
-    #         ../configuration.nix
-    #         home-manager.nixosModules.home-manager
-    #         {
-    #           home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-    #           home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-    #           home-manager.users.${userConf.username} = import ../home-manager/common.nix;
-    #           # home-manager.extraSpecialArgs = {
-    #           #   inherit userConf;
-    #           #   inherit systemConf;
-    #           # };
-    #         }
-    #       ];
-    #       # specialArgs = {
-    #       #   inherit userConf;
-    #       #   inherit systemConf;
-    #       # };
-    #   };
-
-    # };
-
-    
-
-      # nixosConfigurations."G24L061" = 
-      # let 
-      #   userConf = rec {
-      #   name = "mathew";
-      #   fullName = "Mathew Kuthur James";
-      #   email = "mathewkj2048@gmail.com"; 
-
-      #   username = name;
-      #   homeDirectory = "/home/${username}";
-      #   downloadsDirectory = "${homeDirectory}/Downloads"; 
-      #   desktopDirectory = "${homeDirectory}/Desktop";
-      #   thisDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
-      #   screenshotsDirectory = desktopDirectory; # location to which screenshots are saved
-      #   videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
-        
-      #   gitArgs  = {
-      #     inherit email; # email for git, used for signing commits
-      #     name = fullName; # name for git, used for signing commits
-      #   };
-      # };
-      #   systemConf = {
-      #     isNixOS = true;
-      #     KdeWayland = true;
-      #     CinnamonX11 = true;
-      #   };
-      #   specialArgs = {
-      #     inherit userConf;
-      #     inherit systemConf;
-      #   };
-      # in nixpkgs.lib.nixosSystem {
-      #     modules = [
-      #       ../nixos/configurations/laptop.nix
-      #       ../hardware-configurations/ThinkPad-P14s-Gen-5.nix
-      #       home-manager.nixosModules.home-manager
-      #       {
-      #         home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-      #         home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-      #         home-manager.users.${userConf.username} = import ../home-manager/default.nix;
-      #         home-manager.extraSpecialArgs = specialArgs;
-      #       }
-      #     ];
-      #     specialArgs = specialArgs;
-      # };
-# }
 
 /*
-Template: NixOS configuration
 
-nixosConfigurations."G24L061-ThinkPad-P14s-Gen-5" = 
-  let 
-    specialArgs = {
-      inherit userConf;
-      isNixOS = true;
-      KdeWayland = true;
-      CinnamonX11 = true;
-    };
-  in nixpkgs.lib.nixosSystem {
-      modules = [
-        ../hosts/G24L061-ThinkPad-P14s-Gen-5/configuration.nix
-        ../hosts/G24L061-ThinkPad-P14s-Gen-5/hardware-configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-          home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-          home-manager.users.${userConf.username} = import ../home-manager/home.nix;
-          home-manager.extraSpecialArgs = specialArgs;
-        }
-      ];
-      specialArgs = specialArgs;
-  };
+hostnames:
 
-*/
+bootstrap: temporary, to get things up and running
+malachite: main laptop - thinkpad L14-gen3
+bauxite:    old laptop - dell inspiron
+pyrite:     old phone  - galaxy
+pyrolusite: main phone - pixel
+wurtzite:   work laptop - thinkpad P14-Gen5
 
-/*
-Template: Home-manager configuration
+(incoming)
+sphalerite: spare laptop - thinkpad T480
+erythrite:  e-reader     - tbd
 
-homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
-  pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  # this is efficient to enable quick eval. This does not mean "old" packages
-  
-  # Specify your home configuration modules here, for example,
-  # the path to your home.nix.
-  modules = [ 
-    ../home-manager/default.nix
-  ];
 
-  # Optionally use extraSpecialArgs to pass through arguments to home.nix
-  # extraSpecialArgs is for home configurations, specialArgs is for nixOS configs
-  extraSpecialArgs = {
-    inherit userConf;
-    isNixOS = false;
-    KdeWayland = false; # this is when building for KDE on wayland
-    CinnamonX11 = true; # this is when building for Cinnamon on X11
-  };
-};
+
 */

@@ -74,7 +74,15 @@
       zstyle ':completion:*' menu no
       zstyle ':fzf-tab:*' fzf-flags '--color=16'
 
-      PROMPT='%~❯'
+      if [[ -n "$SSH_CONNECTION" ]]; then
+        # Prompt for remote SSH sessions
+        PROMPT='%F{green}%n%f@%F{green}%m%f:%F{blue}%~%f❯'
+      else
+        # Prompt for local sessions
+        PROMPT='%F{blue}%~%f❯'
+      fi
+
+      
 
       if [ -f "$HOME/.zsh_custom" ]; then
         source "$HOME/.zsh_custom"
