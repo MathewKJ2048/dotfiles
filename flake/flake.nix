@@ -81,7 +81,7 @@
       };
 
 
-    nixosConfigurations."qemu-vm" = 
+    nixosConfigurations."qemu-guest" = 
     let 
       systemConf = {
         isNixOS = true;
