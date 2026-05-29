@@ -4,7 +4,7 @@
 
 {
   imports = [
-    ./minimal.nix
+    ./minimal-headless.nix
 
     ../modules/apps/vscodium.nix # text editor
     ../modules/apps/browsers/firefox.nix  # browser
