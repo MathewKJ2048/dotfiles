@@ -1,10 +1,4 @@
-{ pkgs, systemConf, ... }:
+{ config, pkgs, lib, systemConf, ... }:
 {
-
-  home.packages =
-    with pkgs;
-    [
-    ]
-    ++ lib.optional systemConf.isNixOS vlc;
-
+  home.packages = lib.optional systemConf.isNixOS pkgs.vlc;
 }

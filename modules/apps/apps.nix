@@ -11,7 +11,7 @@
   imports = [
     ./browsers/firefox.nix
     ./browsers/librewolf.nix
-    ./browsers/tor.nix
+    ./browsers/tor-browser.nix
 
     ./terminals/cool-retro-term.nix
     ./terminals/ghostty.nix
