@@ -133,6 +133,16 @@
               mpv "$file" --vo=null --loop
           fi
       }
+      wallpaper()
+      {
+          # fuzzyfinding and switching wallpapers
+          file=$(find ${userConf.thisDirectory}/wallpapers/ -type f | fzf --preview 'chafa {}' --delimiter='/' --with-nth 6..)
+          if [[ -n "$file" && -f "$file" ]]; then
+              cp $file ${userConf.thisDirectory}/build/base;
+              cp $file ${userConf.thisDirectory}/build/modified;
+              gsettings set org.cinnamon.desktop.background picture-uri  "file://${userConf.thisDirectory}/build/modified"
+          fi
+      }
 
     '';
   };
