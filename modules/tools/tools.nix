@@ -1,5 +1,5 @@
-
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   home.packages = with pkgs; [
 
@@ -8,6 +8,8 @@
     imagemagick
     ffmpeg
     yt-dlp
+    zip
+    unzip
   ];
-  
+
 }
