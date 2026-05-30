@@ -119,7 +119,7 @@
         isNixOS = true;
         sshPasswordAuth = true;
         KDE = false;
-        Cinnamon = false;
+        Cinnamon = true;
         hostName = "wurtzite";
         locale = "en_US.UTF-8";
         timeZone = "America/New_York";
