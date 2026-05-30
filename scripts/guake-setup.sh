@@ -1,1 +1,1 @@
-guake --restore-preferences ./apps/guake-config.cfg
+guake --restore-preferences ./config/guake-config.cfg
