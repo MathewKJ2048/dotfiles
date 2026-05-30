@@ -1,0 +1,1 @@
+gpg -d ./encrypted_archive.tar.gz.gpg | tar -xzvf -
