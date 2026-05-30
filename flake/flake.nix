@@ -32,13 +32,7 @@
     in
     {
       homeConfigurations.default =
-        let
-          systemConf = {
-            isNixOS = false;
-            KDE = false;
-            Cinnamon = false;
-          };
-        in
+
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
@@ -46,7 +40,7 @@
           ];
           extraSpecialArgs = {
             inherit userConf;
-            inherit systemConf;
+            systemConf.isNixOS = false;
           };
         };
 
@@ -55,12 +49,6 @@
           systemConf = {
             isNixOS = true;
             sshPasswordAuth = true;
-            KDE = false;
-            Cinnamon = false;
-            hostName = "bootstrap";
-            locale = "en_US.UTF-8";
-            timeZone = "America/New_York";
-            keyboardLayout = "us";
           };
           specialArgs = {
             inherit userConf;
@@ -88,12 +76,6 @@
           systemConf = {
             isNixOS = true;
             sshPasswordAuth = true;
-            KDE = false;
-            Cinnamon = false;
-            hostName = "bootstrap";
-            locale = "en_US.UTF-8";
-            timeZone = "America/New_York";
-            keyboardLayout = "us";
           };
           specialArgs = {
             inherit userConf;
