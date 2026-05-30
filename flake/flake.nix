@@ -131,7 +131,7 @@
       };
     in nixpkgs.lib.nixosSystem {
         modules = [
-          ../nixos/common.nix
+          ../nixos/configurations/common.nix
           ../temp/hardware-configuration.nix
           ../nixos/configurations/ssh.nix
           ../nixos/configurations/tailscale.nix
