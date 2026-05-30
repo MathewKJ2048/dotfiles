@@ -131,6 +131,7 @@
       };
     in nixpkgs.lib.nixosSystem {
         modules = [
+          ../nixos/configurations/boot.nix
           ../nixos/configurations/common.nix
           ../temp/hardware-configuration.nix
           ../nixos/configurations/ssh.nix
