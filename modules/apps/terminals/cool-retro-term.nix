@@ -1,10 +1,4 @@
-{ pkgs, systemConf, ... }:
+{ config, pkgs, lib, systemConf, ... }:
 {
-
-  home.packages =
-    with pkgs;
-    [
-    ]
-    ++ lib.optional systemConf.isNixOS cool-retro-term;
-
+  home.packages = lib.optional systemConf.isNixOS pkgs.cool-retro-term;
 }

@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   userConf,
@@ -7,11 +8,7 @@
 }:
 {
 
-  home.packages =
-    with pkgs;
-    [
-    ]
-    ++ lib.optional systemConf.isNixOS mpv;
+  home.packages = lib.optional systemConf.isNixOS pkgs.mpv;
 
   home.file =
     builtins.mapAttrs
