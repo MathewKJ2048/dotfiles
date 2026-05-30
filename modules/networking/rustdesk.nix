@@ -7,5 +7,5 @@
   ...
 }:
 {
-
+  home.packages = lib.optional systemConf.isNixOS pkgs.rustdesk-flutter;
 }
