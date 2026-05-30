@@ -1,1 +1,1 @@
-tar -czvf - ./secrets | gpg -c -o encrypted.tar.gz.gpg
+zip -er encrypted.zip ./secrets
