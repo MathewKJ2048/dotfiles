@@ -55,7 +55,7 @@
         isNixOS = true;
         sshPasswordAuth = true;
         KDE = false;
-        Cinnamon = true;
+        Cinnamon = false;
         hostName = "bootstrap";
         locale = "en_US.UTF-8";
         timeZone = "America/New_York";
@@ -69,6 +69,7 @@
         modules = [
           ../temp/configuration.nix
           ../nixos/configurations/ssh.nix
+          ../nixos/configurations/tailscale.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
@@ -100,11 +101,45 @@
         modules = [
           ../temp/configuration.nix
           ../nixos/configurations/ssh.nix
+          ../nixos/configurations/tailscale.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
             home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
             home-manager.users.${userConf.username} = ../home-manager/minimal-headless.nix;
+            home-manager.extraSpecialArgs = specialArgs;
+          }
+        ];
+        specialArgs = specialArgs;
+      };
+
+    nixosConfigurations."wurtzite" = 
+    let 
+      systemConf = {
+        isNixOS = true;
+        sshPasswordAuth = true;
+        KDE = false;
+        Cinnamon = false;
+        hostName = "wurtzite";
+        locale = "en_US.UTF-8";
+        timeZone = "America/New_York";
+        keyboardLayout = "us";
+      };
+      specialArgs = {
+        inherit userConf;
+        inherit systemConf;
+      };
+    in nixpkgs.lib.nixosSystem {
+        modules = [
+          ../nixos/common.nix
+          ../temp/hardware-configuration.nix
+          ../nixos/configurations/ssh.nix
+          ../nixos/configurations/tailscale.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+            home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+            home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
             home-manager.extraSpecialArgs = specialArgs;
           }
         ];
