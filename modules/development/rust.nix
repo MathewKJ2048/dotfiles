@@ -8,6 +8,7 @@
     cargo # package manager
     clippy # linter
     rust-analyzer # language server
+    rustfmt # formatter
 
   ];
 

@@ -4,6 +4,7 @@
     ./android.nix
     ./git.nix
     ./java.nix
+    ./nix.nix
     ./python.nix
     ./rust.nix
     ./tex.nix
