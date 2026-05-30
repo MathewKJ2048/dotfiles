@@ -156,7 +156,7 @@
             ../nixos/configurations/common.nix
             ../nixos/configurations/ssh.nix
             ../nixos/configurations/tailscale.nix
-            ../temp/hardware-configuration.nix
+            ../nixos/hardware-configurations/Inspiron-5590.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
