@@ -1,8 +1,17 @@
-{ config, pkgs, userConf, systemConf, ... }: {
+{
+  config,
+  pkgs,
+  userConf,
+  systemConf,
+  ...
+}:
+{
 
-  home.packages = with pkgs; [
-  ] ++ lib.optional systemConf.isNixOS mpv;
-  
+  home.packages =
+    with pkgs;
+    [
+    ]
+    ++ lib.optional systemConf.isNixOS mpv;
 
   home.file =
     builtins.mapAttrs
@@ -15,6 +24,5 @@
         "${config.xdg.configHome}/mpv/input.conf" = "mpv-input.conf";
         "${config.xdg.configHome}/mpv/mpv.conf" = "mpv.conf";
       };
-  
-  
+
 }

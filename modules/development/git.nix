@@ -1,5 +1,6 @@
-{ userConf, ... }: {
-  
+{ userConf, ... }:
+{
+
   programs.git = {
     enable = true;
     settings = {

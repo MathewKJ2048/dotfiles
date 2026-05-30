@@ -1,10 +1,16 @@
-{ config, pkgs, userConf, systemConf, ... }: {
+{
+  config,
+  pkgs,
+  userConf,
+  systemConf,
+  ...
+}:
+{
 
   programs.vscodium = {
     enable = systemConf.isNixOS;
     package = pkgs.vscodium;
   };
-
 
   home.file = {
     "${config.xdg.configHome}/VSCodium/User/settings.json" = {

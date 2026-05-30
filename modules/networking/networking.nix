@@ -1,4 +1,12 @@
-{ config, pkgs, lib, userConf, systemConf, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  userConf,
+  systemConf,
+  ...
+}:
+{
 
   imports = [
     ./syncthing.nix

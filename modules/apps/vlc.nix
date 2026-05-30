@@ -1,7 +1,10 @@
-{ pkgs, systemConf, ... }: {
+{ pkgs, systemConf, ... }:
+{
 
-  home.packages = with pkgs; [
-  ] ++ lib.optional systemConf.isNixOS vlc;
-  
-  
+  home.packages =
+    with pkgs;
+    [
+    ]
+    ++ lib.optional systemConf.isNixOS vlc;
+
 }

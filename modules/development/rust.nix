@@ -1,8 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
-  
   home.packages = with pkgs; [
-    
+
     # rust
     rustc # compiler
     cargo # package manager
@@ -12,6 +12,4 @@
 
   ];
 
-
-  
 }
