@@ -1,5 +1,8 @@
 # Todo
 
+IMPORTANT: basic tools go into minimal-headless, like zip and unzip, curl and wget
+ffmpeg and imagemagick not needed
+
 - extract out all configuration options and pass one for standalone and one for nixos
 
 

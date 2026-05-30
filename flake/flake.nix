@@ -133,6 +133,41 @@
           specialArgs = specialArgs;
         };
 
+      nixosConfigurations."bauxite" =
+        let
+          systemConf = {
+            isNixOS = true;
+            sshPasswordAuth = true;
+            KDE = false;
+            Cinnamon = true;
+            hostName = "bauxite";
+            locale = "en_US.UTF-8";
+            timeZone = "America/New_York";
+            keyboardLayout = "us";
+          };
+          specialArgs = {
+            inherit userConf;
+            inherit systemConf;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ../nixos/configurations/boot.nix
+            ../nixos/configurations/common.nix
+            ../nixos/configurations/ssh.nix
+            ../nixos/configurations/tailscale.nix
+            ../temp/hardware-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
+              home-manager.users.${userConf.username} = ../home-manager/default.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+        };
+
       nixosConfigurations."qemu-guest-nixos" =
         let
           systemConf = {
