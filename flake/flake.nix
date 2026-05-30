@@ -133,14 +133,14 @@
         modules = [
           ../nixos/configurations/boot.nix
           ../nixos/configurations/common.nix
-          ../temp/hardware-configuration.nix
           ../nixos/configurations/ssh.nix
           ../nixos/configurations/tailscale.nix
+          ../nixos/hardware-configurations/ThinkPad-P14-Gen-5.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
             home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-            home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+            home-manager.users.${userConf.username} = ../home-manager/default.nix;
             home-manager.extraSpecialArgs = specialArgs;
           }
         ];
