@@ -23,5 +23,7 @@
     "editor.stickyScroll.enabled": false,
     "workbench.tree.enableStickyScroll": false,
     "terminal.integrated.stickyScroll.enabled": false,
-    "latex-workshop.latex.autoBuild.run": "never"
+    "latex-workshop.latex.autoBuild.run": "never",
+    "nix.enableLanguageServer": true,
+    "nix.formatterPath": "nixfmt"
 }

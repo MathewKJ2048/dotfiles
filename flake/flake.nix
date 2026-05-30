@@ -8,196 +8,196 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-  let
-    userConf = rec {
-      name = "mathew";
-      fullName = "Mathew Kuthur James";
-      email = "mathewkj2048@gmail.com"; 
-
-      username = name;
-      homeDirectory = "/home/${username}";
-      downloadsDirectory = "${homeDirectory}/Downloads"; 
-      desktopDirectory = "${homeDirectory}/Desktop";
-      thisDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
-      screenshotsDirectory = desktopDirectory; # location to which screenshots are saved
-      videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
-      
-      gitArgs  = {
-        inherit email; # email for git, used for signing commits
-        name = fullName; # name for git, used for signing commits
-      };
-    };
-  in
-  {
-    homeConfigurations.default = 
+  outputs =
+    { nixpkgs, home-manager, ... }:
     let
-      systemConf = {
-        isNixOS = false;
-        KDE = false;
-        Cinnamon = false;
+      userConf = rec {
+        name = "mathew";
+        fullName = "Mathew Kuthur James";
+        email = "mathewkj2048@gmail.com";
+
+        username = name;
+        homeDirectory = "/home/${username}";
+        downloadsDirectory = "${homeDirectory}/Downloads";
+        desktopDirectory = "${homeDirectory}/Desktop";
+        thisDirectory = "${homeDirectory}/Projects/dotfiles"; # path to where this repo itself is stored when cloned
+        screenshotsDirectory = desktopDirectory; # location to which screenshots are saved
+        videoDownloadDirectory = desktopDirectory; # locations to which downloaded videos are saved
+
+        gitArgs = {
+          inherit email; # email for git, used for signing commits
+          name = fullName; # name for git, used for signing commits
+        };
       };
     in
-    home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [ 
-        ../home-manager/default.nix
-      ];
-      extraSpecialArgs = {
-        inherit userConf;
-        inherit systemConf;
-      };
-    };
+    {
+      homeConfigurations.default =
+        let
+          systemConf = {
+            isNixOS = false;
+            KDE = false;
+            Cinnamon = false;
+          };
+        in
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            ../home-manager/default.nix
+          ];
+          extraSpecialArgs = {
+            inherit userConf;
+            inherit systemConf;
+          };
+        };
 
-    nixosConfigurations."bootstrap" = 
-    let 
-      systemConf = {
-        isNixOS = true;
-        sshPasswordAuth = true;
-        KDE = false;
-        Cinnamon = false;
-        hostName = "bootstrap";
-        locale = "en_US.UTF-8";
-        timeZone = "America/New_York";
-        keyboardLayout = "us";
-      };
-      specialArgs = {
-        inherit userConf;
-        inherit systemConf;
-      };
-    in nixpkgs.lib.nixosSystem {
-        modules = [
-          ../temp/configuration.nix
-          ../nixos/configurations/ssh.nix
-          ../nixos/configurations/tailscale.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-            home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-            home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
-            home-manager.extraSpecialArgs = specialArgs;
-          }
-        ];
-        specialArgs = specialArgs;
-      };
+      nixosConfigurations."bootstrap" =
+        let
+          systemConf = {
+            isNixOS = true;
+            sshPasswordAuth = true;
+            KDE = false;
+            Cinnamon = false;
+            hostName = "bootstrap";
+            locale = "en_US.UTF-8";
+            timeZone = "America/New_York";
+            keyboardLayout = "us";
+          };
+          specialArgs = {
+            inherit userConf;
+            inherit systemConf;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ../temp/configuration.nix
+            ../nixos/configurations/ssh.nix
+            ../nixos/configurations/tailscale.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
+              home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+        };
 
-    nixosConfigurations."bootstrap-headless" = 
-    let 
-      systemConf = {
-        isNixOS = true;
-        sshPasswordAuth = true;
-        KDE = false;
-        Cinnamon = false;
-        hostName = "bootstrap";
-        locale = "en_US.UTF-8";
-        timeZone = "America/New_York";
-        keyboardLayout = "us";
-      };
-      specialArgs = {
-        inherit userConf;
-        inherit systemConf;
-      };
-    in nixpkgs.lib.nixosSystem {
-        modules = [
-          ../temp/configuration.nix
-          ../nixos/configurations/ssh.nix
-          ../nixos/configurations/tailscale.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-            home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-            home-manager.users.${userConf.username} = ../home-manager/minimal-headless.nix;
-            home-manager.extraSpecialArgs = specialArgs;
-          }
-        ];
-        specialArgs = specialArgs;
-      };
+      nixosConfigurations."bootstrap-headless" =
+        let
+          systemConf = {
+            isNixOS = true;
+            sshPasswordAuth = true;
+            KDE = false;
+            Cinnamon = false;
+            hostName = "bootstrap";
+            locale = "en_US.UTF-8";
+            timeZone = "America/New_York";
+            keyboardLayout = "us";
+          };
+          specialArgs = {
+            inherit userConf;
+            inherit systemConf;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ../temp/configuration.nix
+            ../nixos/configurations/ssh.nix
+            ../nixos/configurations/tailscale.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
+              home-manager.users.${userConf.username} = ../home-manager/minimal-headless.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+        };
 
-    nixosConfigurations."wurtzite" = 
-    let 
-      systemConf = {
-        isNixOS = true;
-        sshPasswordAuth = true;
-        KDE = false;
-        Cinnamon = true;
-        hostName = "wurtzite";
-        locale = "en_US.UTF-8";
-        timeZone = "America/New_York";
-        keyboardLayout = "us";
-      };
-      specialArgs = {
-        inherit userConf;
-        inherit systemConf;
-      };
-    in nixpkgs.lib.nixosSystem {
-        modules = [
-          ../nixos/configurations/boot.nix
-          ../nixos/configurations/common.nix
-          ../nixos/configurations/ssh.nix
-          ../nixos/configurations/tailscale.nix
-          ../nixos/hardware-configurations/ThinkPad-P14-Gen-5.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-            home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-            home-manager.users.${userConf.username} = ../home-manager/default.nix;
-            home-manager.extraSpecialArgs = specialArgs;
-          }
-        ];
-        specialArgs = specialArgs;
-      };
+      nixosConfigurations."wurtzite" =
+        let
+          systemConf = {
+            isNixOS = true;
+            sshPasswordAuth = true;
+            KDE = false;
+            Cinnamon = true;
+            hostName = "wurtzite";
+            locale = "en_US.UTF-8";
+            timeZone = "America/New_York";
+            keyboardLayout = "us";
+          };
+          specialArgs = {
+            inherit userConf;
+            inherit systemConf;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ../nixos/configurations/boot.nix
+            ../nixos/configurations/common.nix
+            ../nixos/configurations/ssh.nix
+            ../nixos/configurations/tailscale.nix
+            ../nixos/hardware-configurations/ThinkPad-P14-Gen-5.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
+              home-manager.users.${userConf.username} = ../home-manager/default.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+        };
 
-
-    nixosConfigurations."qemu-guest-nixos" = 
-    let 
-      systemConf = {
-        isNixOS = true;
-        sshPasswordAuth = true;
-        KDE = true;
-        Cinnamon = false;
-        hostName = "qemu-guest-nixos";
-        locale = "en_US.UTF-8";
-        timeZone = "America/Toronto";
-        keyboardLayout = "us";
-      };
-      specialArgs = {
-        inherit userConf;
-        inherit systemConf;
-      };
-    in nixpkgs.lib.nixosSystem {
-        modules = [
-          ../nixos/configurations/virtual-machine-guest.nix
-          ../nixos/hardware-configurations/qemu-intel-guest.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-            home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
-            home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
-            home-manager.extraSpecialArgs = specialArgs;
-          }
-        ];
-        specialArgs = specialArgs;
-      };
+      nixosConfigurations."qemu-guest-nixos" =
+        let
+          systemConf = {
+            isNixOS = true;
+            sshPasswordAuth = true;
+            KDE = true;
+            Cinnamon = false;
+            hostName = "qemu-guest-nixos";
+            locale = "en_US.UTF-8";
+            timeZone = "America/Toronto";
+            keyboardLayout = "us";
+          };
+          specialArgs = {
+            inherit userConf;
+            inherit systemConf;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ../nixos/configurations/virtual-machine-guest.nix
+            ../nixos/hardware-configurations/qemu-intel-guest.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
+              home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+        };
 
     };
 
 }
 
 /*
+  hostnames:
 
-hostnames:
+  bootstrap: temporary, to get things up and running
+  malachite: main laptop - thinkpad L14-gen3
+  bauxite:    old laptop - dell inspiron
+  pyrite:     old phone  - galaxy
+  pyrolusite: main phone - pixel
+  wurtzite:   work laptop - thinkpad P14-Gen5
 
-bootstrap: temporary, to get things up and running
-malachite: main laptop - thinkpad L14-gen3
-bauxite:    old laptop - dell inspiron
-pyrite:     old phone  - galaxy
-pyrolusite: main phone - pixel
-wurtzite:   work laptop - thinkpad P14-Gen5
-
-(incoming)
-sphalerite: spare laptop - thinkpad T480
-erythrite:  e-reader     - tbd
-
-
-
+  (incoming)
+  sphalerite: spare laptop - thinkpad T480
+  erythrite:  e-reader     - tbd
 */
