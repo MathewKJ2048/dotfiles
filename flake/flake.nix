@@ -55,6 +55,37 @@
         isNixOS = true;
         sshPasswordAuth = true;
         KDE = false;
+        Cinnamon = true;
+        hostName = "bootstrap";
+        locale = "en_US.UTF-8";
+        timeZone = "America/New_York";
+        keyboardLayout = "us";
+      };
+      specialArgs = {
+        inherit userConf;
+        inherit systemConf;
+      };
+    in nixpkgs.lib.nixosSystem {
+        modules = [
+          ../temp/configuration.nix
+          ../nixos/configurations/ssh.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+            home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile 
+            home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+            home-manager.extraSpecialArgs = specialArgs;
+          }
+        ];
+        specialArgs = specialArgs;
+      };
+
+    nixosConfigurations."bootstrap-headless" = 
+    let 
+      systemConf = {
+        isNixOS = true;
+        sshPasswordAuth = true;
+        KDE = false;
         Cinnamon = false;
         hostName = "bootstrap";
         locale = "en_US.UTF-8";
