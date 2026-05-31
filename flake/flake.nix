@@ -100,33 +100,20 @@
 
       nixosConfigurations."wurtzite" =
         let
-          systemConf = {
-            isNixOS = true;
-            sshPasswordAuth = true;
-            KDE = false;
-            Cinnamon = true;
-            hostName = "wurtzite";
-            locale = "en_US.UTF-8";
-            timeZone = "America/New_York";
-            keyboardLayout = "us";
-          };
           specialArgs = {
             inherit userConf;
-            inherit systemConf;
+            systemConf.isNixOS = true;
+            systemConf.sshPasswordAuthentication = true;
           };
         in
         nixpkgs.lib.nixosSystem {
           modules = [
-            ../nixos/configurations/boot.nix
-            ../nixos/configurations/common.nix
-            ../nixos/configurations/ssh.nix
-            ../nixos/configurations/tailscale.nix
-            ../nixos/hardware-configurations/ThinkPad-P14-Gen-5.nix
+            ../hosts/wurtzite/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../home-manager/default.nix;
+              home-manager.users.${userConf.username} = ../hosts/wurtzite/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];

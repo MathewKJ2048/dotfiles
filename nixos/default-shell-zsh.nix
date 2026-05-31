@@ -1,0 +1,10 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ pkgs, userConf, systemConf, ... }:
+
+{
+  users.users.${userConf.username}.shell = pkgs.zsh;
+  programs.zsh.enable = true; # has to be enabled here to avoid warnings
+}
