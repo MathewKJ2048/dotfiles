@@ -1,9 +1,10 @@
 # Todo
 
-IMPORTANT: basic tools go into minimal-headless, like zip and unzip, curl and wget
-ffmpeg and imagemagick not needed
-
-- extract out all configuration options and pass one for standalone and one for nixos
+- test out set up instructions on a VM
+- test out set up instructions on regular debian
+- make remmina a thing, get rid of rustdesk
+- make qemu work
+- games and apps
 
 
 ## KDE:
