@@ -31,12 +31,12 @@
       };
     in
     {
-      homeConfigurations.default =
+      homeConfigurations."bootstrap" =
 
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            ../home-manager/default.nix
+            ../home-manager/minimal.nix
           ];
           extraSpecialArgs = {
             inherit userConf;
@@ -44,61 +44,33 @@
           };
         };
 
-      nixosConfigurations."bootstrap" =
-        let
-          systemConf = {
-            isNixOS = true;
-            sshPasswordAuth = true;
-          };
-          specialArgs = {
-            inherit userConf;
-            inherit systemConf;
-          };
-        in
-        nixpkgs.lib.nixosSystem {
+      homeConfigurations."bootstrap-headless" =
+
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            ../temp/configuration.nix
-            ../nixos/configurations/ssh.nix
-            ../nixos/configurations/tailscale.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
+            ../home-manager/minimal-headless.nix
           ];
-          specialArgs = specialArgs;
+          extraSpecialArgs = {
+            inherit userConf;
+            systemConf.isNixOS = false;
+          };
         };
 
-      nixosConfigurations."bootstrap-headless" =
-        let
-          systemConf = {
-            isNixOS = true;
-            sshPasswordAuth = true;
-          };
-          specialArgs = {
-            inherit userConf;
-            inherit systemConf;
-          };
-        in
-        nixpkgs.lib.nixosSystem {
+      homeConfigurations."malachite" =
+
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            ../temp/configuration.nix
-            ../nixos/configurations/ssh.nix
-            ../nixos/configurations/tailscale.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../home-manager/minimal-headless.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
+            ../hosts/malachite/home.nix
           ];
-          specialArgs = specialArgs;
+          extraSpecialArgs = {
+            inherit userConf;
+            systemConf.isNixOS = false;
+          };
         };
 
-      nixosConfigurations."wurtzite" =
+      nixosConfigurations."bauxite" =
         let
           specialArgs = {
             inherit userConf;
@@ -120,67 +92,22 @@
           specialArgs = specialArgs;
         };
 
-      nixosConfigurations."bauxite" =
+      nixosConfigurations."wurtzite" =
         let
-          systemConf = {
-            isNixOS = true;
-            sshPasswordAuth = true;
-            KDE = false;
-            Cinnamon = true;
-            hostName = "bauxite";
-            locale = "en_US.UTF-8";
-            timeZone = "America/New_York";
-            keyboardLayout = "us";
-          };
           specialArgs = {
             inherit userConf;
-            inherit systemConf;
+            systemConf.isNixOS = true;
+            systemConf.sshPasswordAuthentication = true;
           };
         in
         nixpkgs.lib.nixosSystem {
           modules = [
-            ../nixos/configurations/boot.nix
-            ../nixos/configurations/common.nix
-            ../nixos/configurations/ssh.nix
-            ../nixos/configurations/tailscale.nix
-            ../nixos/hardware-configurations/Inspiron-5590.nix
+            ../hosts/bauxite/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../home-manager/default.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-          specialArgs = specialArgs;
-        };
-
-      nixosConfigurations."qemu-guest-nixos" =
-        let
-          systemConf = {
-            isNixOS = true;
-            sshPasswordAuth = true;
-            KDE = true;
-            Cinnamon = false;
-            hostName = "qemu-guest-nixos";
-            locale = "en_US.UTF-8";
-            timeZone = "America/Toronto";
-            keyboardLayout = "us";
-          };
-          specialArgs = {
-            inherit userConf;
-            inherit systemConf;
-          };
-        in
-        nixpkgs.lib.nixosSystem {
-          modules = [
-            ../nixos/configurations/virtual-machine-guest.nix
-            ../nixos/hardware-configurations/qemu-intel-guest.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+              home-manager.users.${userConf.username} = ../hosts/bauxite/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
@@ -188,7 +115,6 @@
         };
 
     };
-
 }
 
 /*
