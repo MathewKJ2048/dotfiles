@@ -2,6 +2,7 @@
 
 - test out set up instructions on a VM
 - test out set up instructions on regular debian
+- fill out instructions for non-nix systems
 - make remmina a thing, get rid of rustdesk
 - make qemu work
 - games and apps
