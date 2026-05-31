@@ -143,6 +143,16 @@
               gsettings set org.cinnamon.desktop.background picture-uri  "file://${userConf.thisDirectory}/build/modified"
           fi
       }
+      rebuild-home()
+      {
+        echo "rebuilding home for $(hostnamectl --static)"
+        home-manager switch --flake ${userConf.thisDirectory}/flake#$(hostnamectl --static)
+      }
+      rebuild()
+      {
+        echo "rebuilding nixos for $(hostnamectl --static)"
+        sudo nixos-rebuild switch --flake ${userConf.thisDirectory}/flake#$(hostnamectl --static)
+      }
 
     '';
   };

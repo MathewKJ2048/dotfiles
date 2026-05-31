@@ -6,7 +6,9 @@
 - make remmina a thing, get rid of rustdesk
 - make qemu work
 - games and apps
-
+- make rebuild-nixos and rebuild-home-manager part of zsh
+- refactor the flake to use make functions, abstract out the userconf
+- enable config toggling for packages
 
 ## KDE:
 
