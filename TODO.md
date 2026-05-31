@@ -7,22 +7,15 @@
 - make qemu work
 - games and apps
 - make rebuild-nixos and rebuild-home-manager part of zsh
-- refactor the flake to use make functions, abstract out the userconf
+- refactor the flake to use make functions
 - enable config toggling for packages
-
-## KDE:
-
-- wallpaper switch, icon switch, etc
-
-- DMZ-white cursor
-
-
-## Cinnamon:
+- flutter: ability to build app, turn into a flake
+- turn personal tools into a flake
+- icon recoloring
 
 
 ## Common:
 
-- VSCodium
 - Firefox
 - thunderbird
 - web-apps
@@ -33,23 +26,8 @@
 - calendar
 - todo
 
-## Misc:
 
-- Qemu/KVM
-- organize hosts
-- set up ssh-server
-
-
-
-
-## High-level
-
-- save dconf dumps
-- konsave
-
-- imagemagick for wallpapers
 - icon recoloring
-- auto-install personal scripts
 
 
 ```

@@ -11,7 +11,7 @@
   outputs =
     { nixpkgs, home-manager, ... }:
     let
-      userConf = rec {
+      userConf_Mathew_Kuthur_James = rec {
         name = "mathew";
         fullName = "Mathew Kuthur James";
         email = "mathewkj2048@gmail.com";
@@ -39,7 +39,7 @@
             ../home-manager/minimal.nix
           ];
           extraSpecialArgs = {
-            inherit userConf;
+            userConf = userConf_Mathew_Kuthur_James;
             systemConf.isNixOS = false;
           };
         };
@@ -52,7 +52,7 @@
             ../home-manager/minimal-headless.nix
           ];
           extraSpecialArgs = {
-            inherit userConf;
+            userConf = userConf_Mathew_Kuthur_James;
             systemConf.isNixOS = false;
           };
         };
@@ -65,7 +65,7 @@
             ../hosts/malachite/home.nix
           ];
           extraSpecialArgs = {
-            inherit userConf;
+            userConf = userConf_Mathew_Kuthur_James;
             systemConf.isNixOS = false;
           };
         };
@@ -73,7 +73,7 @@
       nixosConfigurations."bootstrap" =
         let
           specialArgs = {
-            inherit userConf;
+            userConf = userConf_Mathew_Kuthur_James;
             systemConf.isNixOS = true;
             systemConf.sshPasswordAuthentication = true;
           };
@@ -87,7 +87,7 @@
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+              home-manager.users.${specialArgs.userConf.username} = ../home-manager/minimal.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
@@ -97,7 +97,7 @@
       nixosConfigurations."bauxite" =
         let
           specialArgs = {
-            inherit userConf;
+            userConf = userConf_Mathew_Kuthur_James;
             systemConf.isNixOS = true;
             systemConf.sshPasswordAuthentication = true;
           };
@@ -109,7 +109,7 @@
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../hosts/bauxite/home.nix;
+              home-manager.users.${specialArgs.userConf.username} = ../hosts/bauxite/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
@@ -119,7 +119,7 @@
       nixosConfigurations."wurtzite" =
         let
           specialArgs = {
-            inherit userConf;
+            userConf = userConf_Mathew_Kuthur_James;
             systemConf.isNixOS = true;
             systemConf.sshPasswordAuthentication = true;
           };
@@ -131,7 +131,7 @@
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${userConf.username} = ../hosts/bauxite/home.nix;
+              home-manager.users.${specialArgs.userConf.username} = ../hosts/bauxite/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
