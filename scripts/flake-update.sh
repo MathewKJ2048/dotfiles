@@ -1,1 +1,1 @@
-
+nix flake update ./flake

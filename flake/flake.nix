@@ -70,6 +70,30 @@
           };
         };
 
+      nixosConfigurations."bootstrap" =
+        let
+          specialArgs = {
+            inherit userConf;
+            systemConf.isNixOS = true;
+            systemConf.sshPasswordAuthentication = true;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ../nixos/ssh.nix
+            ../nixos/default-shell-zsh.nix
+            ../hosts/temp/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
+              home-manager.users.${userConf.username} = ../home-manager/minimal.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+        };
+
       nixosConfigurations."bauxite" =
         let
           specialArgs = {

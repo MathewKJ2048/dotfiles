@@ -1,53 +1,81 @@
 # dotfiles
+
 A personal repository containing commonly used configs, to replicate my systems quickly
 
+This repository uses the nix package manager with flakes, and home-manager, to manage packages and their configs. Download the package manager here: 
 
-This repository uses the nix package manager with flakes, and home-manager, to manage packages and their configs.
 
-## Set-up
 
-- Run `./setup.sh` to make the build folder and set up settings for vscodium
 
-## Non-NixOS:
+## NixOS
 
-1) install the `nix` package manager. This involves running a shell script. Single-user mode is recommended.
-2) enable flakes and nix-commands by writing this to the config file. For single user installs, the config file is in `~/.config/nix/nix.conf`. It may need to be created first.
+1) Install NixOS locally on the system.
 
-```
-experimental-features = nix-command flakes
-```
-The file is `./nix-home-manager/nix.conf` if needed
-
-3) To bootstrap home-manager, run:
+2) Install git:
 
 ```
-nix-shell -p home-manager
-home-manager switch --flake ./nix-home-manager
+sudo nano /etc/nixos/configuration.nix
+# add git to the packages
+sudo nixos-rebuild switch
 ```
 
-4) To update flake.nix, run
+3) Clone this repository into the `Projects` folder by running:
 
 ```
-nix flake update --flake ./nix-home-manager
+cd ~/Projects
+git clone https://github.com/MathewKJ2048/dotfiles
 ```
 
-5) To rebuild software, run
+4) Enable all the scripts and run the needed setup scripts:
 
 ```
-home-manager switch --flake ./nix-home-manager
+chmod +x *   # makes scripts runnable, use with caution
+./scripts/setup-folders.sh
+./scripts/setup-codium.sh
 ```
 
-6) To collect garbage, run:
+5) Make a temporary entry for this host:
 
 ```
-nix-env --delete-generations old
-nix-store gc
+mkdir ./hosts/temp
+cp /etc/nixos/configuration.nix ./hosts/temp/configuration.nix
+cp /etc/nixos/hardware-configuration.nix ./hosts/temp/hardware-configuration.nix
+git add .
+```
+6) Make a minimal system by running:
+
+```
+sudo nixos-rebuild switch --flake ./flake#bootstrap
 ```
 
-## NixOS:
+7) Decide on a hostname `HN`. Rename `temp` to `HN` and edit `./hosts/HN/configuration.nix`. Rebuild by running:
 
-1) Edit configuration.nix in `/etc/nixos/configuration.nix` to install git and enable nix-commands and flakes. Use `sudo nano`.
+```
+sudo nixos-rebuild switch --flake ./flake#bootstrap
+hostnamectl --static   # should return HN
+```
 
-2) git clone this repo and check the configuration in flake.nix
+8) Make an entry for `HN` in flake.nix. Ensure that all imports point to the correct location. For further rebuilds, run:
 
-3) 
+```
+./scripts/rebuild-nixos.sh
+```
+
+9) To access secrets, run: 
+
+```
+./scripts/decrypt.sh
+```
+
+10) To set up the machine, follow the structure of the existing hosts. 
+
+
+
+## Generic linux:
+
+1) Ensure the nix package manager is installed: [https://nixos.org/download/](https://nixos.org/download/)
+
+2) Fill this up
+
+
+
