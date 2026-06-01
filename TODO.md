@@ -12,6 +12,7 @@
 - flutter: ability to build app, turn into a flake
 - turn personal tools into a flake
 - icon recoloring
+- devenv - look into it
 
 
 ## Common:
