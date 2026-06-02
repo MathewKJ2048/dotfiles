@@ -126,12 +126,12 @@
         in
         nixpkgs.lib.nixosSystem {
           modules = [
-            ../hosts/bauxite/configuration.nix
+            ../hosts/wurtzite/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
               home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${specialArgs.userConf.username} = ../hosts/bauxite/home.nix;
+              home-manager.users.${specialArgs.userConf.username} = ../hosts/wurtzite/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
