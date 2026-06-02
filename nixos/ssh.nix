@@ -7,6 +7,7 @@
     enable = true;
     ports = [ 42 ];
     settings = {
+      X11Forwarding = true;
       PasswordAuthentication = systemConf.sshPasswordAuthentication;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
