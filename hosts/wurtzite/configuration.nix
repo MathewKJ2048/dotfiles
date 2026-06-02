@@ -51,10 +51,11 @@
   services.xserver.enable = true;
 
   # Enable the Cinnamon Desktop Environment, with Slick Greeter
-  services.xserver.displayManager.lightdm = {
-    enable = true;
-    greeters.slick.enable = true;
-  };
+  # services.xserver.displayManager.lightdm = {
+  #   enable = true;
+  #   greeters.slick.enable = true;
+  # };
+  services.displayManager.ly.enable = true;
   services.xserver.desktopManager.cinnamon.enable = true;
 
   # Configure keymap in X11
