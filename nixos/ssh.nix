@@ -1,5 +1,5 @@
 
-{ pkgs, userConf, systemConf, ... }:
+{ systemConf, ... }:
 
 {
 
