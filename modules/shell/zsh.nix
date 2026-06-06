@@ -53,8 +53,6 @@
       la = "ls -a";
       cls = "clear";
       history = "history 0";
-      ip = "ip a";
-      ipconfig = "ip a";
       refresh = "source ${zshrcPath}";
 
       # program-specific
