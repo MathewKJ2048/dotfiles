@@ -6,10 +6,11 @@
  services.create_ap = {
     enable = true;
     settings = {
-      INTERNET_IFACE = "eth0";
-      WIFI_IFACE = "wlan0";
-      SSID = systemConf.hotspotSSID;
-      PASSPHRASE = systemConf.hotspotPASSPHRASE;
+      # run `ip link show` to get this info for the specific device
+      INTERNET_IFACE = systemConf.hotspot.INTERNET_IFACE;
+      WIFI_IFACE = systemConf.hotspot.WIFI_IFACE;
+      SSID = systemConf.hotspot.SSID;
+      PASSPHRASE = systemConf.hotspot.PASSPHRASE;
     };
   };
 }

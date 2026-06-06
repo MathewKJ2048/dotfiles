@@ -92,8 +92,12 @@
         hostName = "wurtzite";
         userConf = userConf_Mathew_Kuthur_James;
         systemConf.sshPasswordAuthentication = true;
-        systemConf.hotspotPASSPHRASE = "12345678";
-        systemConf.hotspotSSID = "wurtzite";
+        systemConf.hotspot = {
+          INTERNET_IFACE = "enp0s31f6";
+          WIFI_IFACE = "wlp0s20f3";
+          PASSPHRASE = "12345678";
+          SSID = "wurtzite";
+        };
       };
 
     };
