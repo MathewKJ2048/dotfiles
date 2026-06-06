@@ -30,7 +30,7 @@
         };
       };
 
-      mkHomeConfiguration = {hostName, userConf, systemConf, pkgs } : 
+      mkHomeConfiguration = {hostName, userConf, systemConf, pkgs} : 
       home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
@@ -38,9 +38,8 @@
           ];
           extraSpecialArgs = {
             inherit userConf;
-            systemConf = {
-              inherit systemConf;
-              isNixOS = false;
+            systemConf = systemConf // {
+              isNixOS = false; # this is merged to systemConf
             };
           };
         };
@@ -49,9 +48,8 @@
         let
           specialArgs = {
             inherit userConf;
-            systemConf = {
-              inherit systemConf;
-              isNixOS = true;
+            systemConf = systemConf // {
+              isNixOS = true; # this is merged to systemConf
             };
           };
         in
