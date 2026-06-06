@@ -12,6 +12,7 @@
       ../../nixos/tailscale.nix
       ../../nixos/no-sleep.nix
       ../../nixos/default-shell-zsh.nix
+      ../../nixos/hotspot.nix
     ];
 
   # Bootloader.

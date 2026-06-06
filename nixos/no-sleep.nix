@@ -1,5 +1,5 @@
 
-{ pkgs, userConf, systemConf, ... }:
+{ ... }:
 
 {
   systemd.targets.sleep.enable = false;
