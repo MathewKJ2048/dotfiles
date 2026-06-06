@@ -29,114 +29,72 @@
           name = fullName; # name for git, used for signing commits
         };
       };
+
+      mkHomeConfiguration = {hostName, userConf, systemConf, pkgs } : 
+      home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ../hosts/${hostName}/home.nix
+          ];
+          extraSpecialArgs = {
+            inherit userConf;
+            systemConf = {
+              inherit systemConf;
+              isNixOS = false;
+            };
+          };
+        };
+
+      mkNixosConfiguration = {hostName, userConf, systemConf} :
+        let
+          specialArgs = {
+            inherit userConf;
+            systemConf = {
+              inherit systemConf;
+              isNixOS = true;
+            };
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ../hosts/${hostName}/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
+              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
+              home-manager.users.${specialArgs.userConf.username} = ../hosts/${hostName}/home.nix;
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+          specialArgs = specialArgs;
+        };
     in
     {
-      homeConfigurations."bootstrap" =
 
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [
-            ../home-manager/minimal.nix
-          ];
-          extraSpecialArgs = {
-            userConf = userConf_Mathew_Kuthur_James;
-            systemConf.isNixOS = false;
-          };
-        };
+      homeConfigurations."malachite" = mkHomeConfiguration {
+        hostName = "malachite";
+        userConf = userConf_Mathew_Kuthur_James;
+        systemConf = {};
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      };
 
-      homeConfigurations."bootstrap-headless" =
+      nixosConfigurations."sphalerite" = mkNixosConfiguration {
+        hostName = "sphalerite";
+        userConf = userConf_Mathew_Kuthur_James;
+        systemConf.sshPasswordAuthentication = true;
+      };
 
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [
-            ../home-manager/minimal-headless.nix
-          ];
-          extraSpecialArgs = {
-            userConf = userConf_Mathew_Kuthur_James;
-            systemConf.isNixOS = false;
-          };
-        };
+      nixosConfigurations."bauxite" = mkNixosConfiguration {
+        hostName = "bauxite";
+        userConf = userConf_Mathew_Kuthur_James;
+        systemConf.sshPasswordAuthentication = true;
+      };
 
-      homeConfigurations."malachite" =
-
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [
-            ../hosts/malachite/home.nix
-          ];
-          extraSpecialArgs = {
-            userConf = userConf_Mathew_Kuthur_James;
-            systemConf.isNixOS = false;
-          };
-        };
-
-      nixosConfigurations."bootstrap" =
-        let
-          specialArgs = {
-            userConf = userConf_Mathew_Kuthur_James;
-            systemConf.isNixOS = true;
-            systemConf.sshPasswordAuthentication = true;
-          };
-        in
-        nixpkgs.lib.nixosSystem {
-          modules = [
-            ../nixos/ssh.nix
-            ../nixos/default-shell-zsh.nix
-            ../hosts/temp/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${specialArgs.userConf.username} = ../home-manager/minimal.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-          specialArgs = specialArgs;
-        };
-
-      nixosConfigurations."bauxite" =
-        let
-          specialArgs = {
-            userConf = userConf_Mathew_Kuthur_James;
-            systemConf.isNixOS = true;
-            systemConf.sshPasswordAuthentication = true;
-          };
-        in
-        nixpkgs.lib.nixosSystem {
-          modules = [
-            ../hosts/bauxite/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${specialArgs.userConf.username} = ../hosts/bauxite/home.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-          specialArgs = specialArgs;
-        };
-
-      nixosConfigurations."wurtzite" =
-        let
-          specialArgs = {
-            userConf = userConf_Mathew_Kuthur_James;
-            systemConf.isNixOS = true;
-            systemConf.sshPasswordAuthentication = true;
-          };
-        in
-        nixpkgs.lib.nixosSystem {
-          modules = [
-            ../hosts/wurtzite/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true; # use the same nixpkgs as the nixos system
-              home-manager.useUserPackages = true; # prevent creation of a separate .nix-profile
-              home-manager.users.${specialArgs.userConf.username} = ../hosts/wurtzite/home.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-          specialArgs = specialArgs;
-        };
+      nixosConfigurations."wurtzite" = mkNixosConfiguration {
+        hostName = "wurtzite";
+        userConf = userConf_Mathew_Kuthur_James;
+        systemConf.sshPasswordAuthentication = true;
+      };
 
     };
 }
