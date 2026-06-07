@@ -1,15 +1,19 @@
 # Todo
 
-- test out set up instructions on a VM
-- test out set up instructions on regular debian
-- fill out instructions for non-nix systems
-- make remmina a thing, get rid of rustdesk
+- syncthing - make it global
+- make remmina work
+- fill out instructions
+- tailscale secret auto-setup
+- github secret auto-setup
+- make ssh-ing easier
+- get rid of rustdesk
 - make qemu work
 - games and apps
-- make rebuild-nixos and rebuild-home-manager part of zsh
-- refactor the flake to use make functions
 - enable config toggling for packages
 - flutter: ability to build app, turn into a flake
+- python uv
+- nix ld
+- nix fhs
 - turn personal tools into a flake
 - icon recoloring
 - devenv - look into it
