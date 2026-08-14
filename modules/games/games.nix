@@ -1,5 +1,22 @@
 { config, pkgs, lib, userConf, systemConf, ... }: {
 
+  home.packages = with pkgs; [
+    ruffle
+
+    naev
+    mindustry
+    openttd
+    xonotic
+    supertux
+    supertuxkart
+    luanti
+    aisleriot
+    space-cadet-pinball
+    wesnoth
+    
+
+  ];
+
 # mindustry, 
 # naev, 
 # xonotic, 

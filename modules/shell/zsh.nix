@@ -34,17 +34,6 @@
       append = true; # concurrent zsh sessions append their history list to the file, instead of overwriting
     };
 
-    # completionInit = '' 
-    #    autoload -U compinit 
-    #    compinit
-
-        
-        
-        
-    # ''; # these need to be written explicitly, there is no boolean option to autoload compinit
-
-    # zstyle ':completion:*' menu select yes
-    # zstyle ':completion:*' list-colors ${"$"}{(s.:.)LS_COLORS}
 
     shellAliases = {
       # general
@@ -60,6 +49,9 @@
       cd = lib.mkIf config.programs.zoxide.enable "z";
       grep = lib.mkIf config.programs.ripgrep.enable "rg";
       cat = lib.mkIf config.programs.bat.enable "bat -P";
+      # code = lib.mkIf config.programs.vscodium.enable "codium";
+      # the above is wrong because config.programs.vscodium.enable is false when codium not installed via nix but via other package managers, codium is considered the default over code so there is no checking with mkIF
+      code = "codium";
     };
 
     shellGlobalAliases = {
@@ -151,7 +143,12 @@
         echo "rebuilding nixos for $(hostnamectl --static)"
         sudo nixos-rebuild switch --flake ${userConf.thisDirectory}/flake#$(hostnamectl --static)
       }
-
+      flake-update()
+      {
+        echo "updating flake in ${userConf.thisDirectory}/flake"
+        echo "run rebuild after this to get new packages"
+        nix flake update --flake ${userConf.thisDirectory}/flake
+      }
     '';
   };
 

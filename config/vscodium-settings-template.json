@@ -19,6 +19,9 @@
     "svg.preview.mode": "svg",
     "editor.unicodeHighlight.nonBasicASCII": true,
     "editor.unicodeHighlight.ambiguousCharacters": true,
+
+    
+    
     "terminal.integrated.initialHint": false,
     "editor.stickyScroll.enabled": false,
     "workbench.tree.enableStickyScroll": false,
