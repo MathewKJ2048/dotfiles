@@ -10,7 +10,6 @@
 
   imports = [
     ./syncthing.nix
-    ./rustdesk.nix
     ./remmina.nix
   ];
 
