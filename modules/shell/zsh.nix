@@ -149,8 +149,10 @@
       flake-update()
       {
         echo "updating flake in ${userConf.thisDirectory}/flake"
-        echo "run rebuild after this to get new packages"
         nix flake update --flake ${userConf.thisDirectory}/flake
+        echo "run rebuild after this to get new packages"
+        echo "if rebuild fails, navigate to the dot files repository and restore the lock file:"
+        echo "cd ${userConf.thisDirectory} && git restore ./flake/flake.lock"
       }
     '';
   };
