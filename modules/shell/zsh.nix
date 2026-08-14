@@ -1,4 +1,4 @@
-{ config, pkgs, lib, userConf, ... }: {
+{ config, pkgs, lib, systemConf, userConf, ... }: {
 
   home.packages = with pkgs; [
     zsh-fzf-tab
@@ -133,16 +133,19 @@
               gsettings set org.cinnamon.desktop.background picture-uri  "file://${userConf.thisDirectory}/build/modified"
           fi
       }
-      rebuild-home()
-      {
-        echo "rebuilding home for $(hostnamectl --static)"
-        home-manager switch --flake ${userConf.thisDirectory}/flake#$(hostnamectl --static)
-      }
+      ${  if systemConf.isNixOS then ''
       rebuild()
       {
         echo "rebuilding nixos for $(hostnamectl --static)"
         sudo nixos-rebuild switch --flake ${userConf.thisDirectory}/flake#$(hostnamectl --static)
       }
+      '' else ''
+      rebuild-home()
+      {
+        echo "rebuilding home for $(hostnamectl --static)"
+        home-manager switch --flake ${userConf.thisDirectory}/flake#$(hostnamectl --static)
+      }
+      ''  }
       flake-update()
       {
         echo "updating flake in ${userConf.thisDirectory}/flake"
