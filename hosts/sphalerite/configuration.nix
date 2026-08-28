@@ -13,6 +13,7 @@
       ../../nixos/no-sleep.nix
       ../../nixos/default-shell-zsh.nix
       ../../nixos/syncthing.nix
+      ../../nixos/hotspot.nix
     ];
 
   # Bootloader.
