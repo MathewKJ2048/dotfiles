@@ -27,5 +27,7 @@
   # this is also a sample comment
   # this is also a sample comment, but another one
 
+  # sample change
+
   programs.git.ignores = [".jj/"];
 }
