@@ -96,16 +96,6 @@
           git -C "$CWD" pull
           git -C "$CWD" push
       }
-      ju()
-      {
-        if [ -z "$1" ]; then
-              echo "Error: Please provide a commit message as the first argument."
-              exit 1
-        fi
-        jj describe -m "$*"
-        jj b a
-        jj git push
-      }
 
       try()
       {
