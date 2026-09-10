@@ -11,6 +11,7 @@
   imports = [
     ./android.nix
     ./git.nix
+    ./jujutsu.nix
     ./java.nix
     ./nix.nix
     ./python.nix
