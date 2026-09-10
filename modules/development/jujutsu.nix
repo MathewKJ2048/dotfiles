@@ -23,5 +23,8 @@
     };
   };
 
+  # this is a sample comment to test jj
+  # this is also a sample comment
+
   programs.git.ignores = [".jj/"];
 }
