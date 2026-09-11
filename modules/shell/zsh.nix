@@ -96,6 +96,10 @@
           git -C "$CWD" pull
           git -C "$CWD" push
       }
+      jd()
+      {
+        jj describe -m "$*"
+      }
 
       try()
       {
