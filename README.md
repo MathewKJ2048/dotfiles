@@ -29,7 +29,6 @@ git clone https://github.com/MathewKJ2048/dotfiles
 4) Enable all the scripts and run the needed setup scripts:
 
 ```
-chmod +x ./scripts/*   # makes scripts runnable, use with caution
 ./scripts/setup-folders.sh
 ./scripts/setup-codium.sh
 ```
