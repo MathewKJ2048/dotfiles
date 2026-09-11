@@ -20,6 +20,7 @@
     settings = {
       user.name = userConf.gitArgs.name;
       user.email = userConf.gitArgs.email;
+      ui.default-command = "log";
     };
   };
 
