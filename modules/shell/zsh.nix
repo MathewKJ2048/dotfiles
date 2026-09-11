@@ -104,6 +104,10 @@
       {
         jj b a
       }
+      jgp()
+      {
+        jj git push
+      }
 
       try()
       {
