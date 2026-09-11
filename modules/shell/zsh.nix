@@ -100,6 +100,10 @@
       {
         jj describe -m "$*"
       }
+      jjba()
+      {
+        jj b a
+      }
 
       try()
       {
