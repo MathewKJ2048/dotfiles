@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ../../home-manager/maximal.nix
+    ../../home-manager/default.nix
   ];
 }
