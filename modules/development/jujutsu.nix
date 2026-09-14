@@ -21,6 +21,11 @@
       user.name = userConf.gitArgs.name;
       user.email = userConf.gitArgs.email;
       ui.default-command = "log";
+      revset-aliases = 
+      {
+        # make every single remote commit immutable, not just main
+      "immutable_heads()" = "builtin_immutable_heads() | remote_bookmarks()";
+      };
     };
   };
 
