@@ -18,6 +18,7 @@
     ./rust.nix
     ./tex.nix
     ./web.nix
+    ./devenv.nix
   ];
 
 }
