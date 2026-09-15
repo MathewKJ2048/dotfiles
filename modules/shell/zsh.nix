@@ -108,6 +108,10 @@
       {
         jj git push
       }
+      jn()
+      {
+        jj new
+      }
 
       try()
       {
