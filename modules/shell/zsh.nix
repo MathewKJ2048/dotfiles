@@ -81,36 +81,21 @@
         echo ".zsh_custom file created"
       fi
 
-      gu()
-      {
-          CWD="$(pwd)"  # Current Working Directory
-
-          if [ -z "$1" ]; then
-              echo "Error: Please provide a commit message as the first argument."
-              exit 1
-          fi
-
-          # -C to specify the working directory
-          git -C "$CWD" add .
-          git -C "$CWD" commit -m "$*" # arguments need not be in quotes
-          git -C "$CWD" pull
-          git -C "$CWD" push
-      }
-      jd()
+      jjd()
       {
         jj describe -m "$*"
       }
-      jjba()
-      {
-        jj b a
-      }
-      jgp()
+      jjgp()
       {
         jj git push
       }
-      jn()
+      jjn()
       {
         jj new
+      }
+      jjb()
+      {
+      jj b $1
       }
 
       try()
