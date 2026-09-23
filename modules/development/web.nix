@@ -5,7 +5,7 @@
 
     # web development
     nodejs
-
+    deno
   ];
 
 }

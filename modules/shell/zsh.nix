@@ -89,13 +89,17 @@
       {
         jj git push
       }
+      jjgf()
+      {
+        jj git fetch
+      }
       jjn()
       {
         jj new
       }
       jjb()
       {
-      jj b $1
+      jj b $*
       }
 
       try()
